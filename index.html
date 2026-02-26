@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIVA — Women's Life Wellness</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;700;900&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --lime: #C4E84A;
+  --lime2: #D8F06A;
+  --terra: #C4673A;
+  --ivory: #F5F0E8;
+  --sage: #4A7C59;
+  --moss: #2E4D38;
+  --sand: #E8DCC8;
+  --cream: #FAF7F2;
+  --ink: #1C1C1C;
+  --muted: #7A7260;
+  --card: #FFFFFF;
+  --sky: #7EC8D4;
+  --peach: #F0A882;
+  --lavender: #B8A9D9;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Lora',serif; background:var(--cream); color:var(--ink); min-height:100vh; cursor:none; }
+.cursor { width:16px; height:16px; background:var(--lime); border-radius:50%; position:fixed; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:transform .1s, width .2s, height .2s; mix-blend-mode:multiply; }
+.cursor-ring { width:36px; height:36px; border:1.5px solid var(--terra); border-radius:50%; position:fixed; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:all .15s ease; }
+nav { position:sticky; top:0; z-index:200; background:var(--moss); padding:0 32px; display:flex; align-items:center; justify-content:space-between; height:62px; border-bottom:3px solid var(--lime); }
+.logo { font-family:'Unbounded',sans-serif; font-size:1.3rem; font-weight:900; color:var(--lime); letter-spacing:4px; }
+.logo sub { font-size:.55rem; color:var(--peach); vertical-align:bottom; letter-spacing:2px; }
+.nav-tabs { display:flex; gap:0; }
+.nav-tab { padding:8px 14px; font-family:'Unbounded',sans-serif; font-size:0.58rem; font-weight:400; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer; border:none; background:transparent; color:rgba(255,255,255,0.45); transition:all .2s; border-right:1px solid rgba(255,255,255,0.08); }
+.nav-tab:hover { color:var(--lime); }
+.nav-tab.active { background:var(--lime); color:var(--moss); font-weight:700; }
+.section { display:none; padding:36px 32px; max-width:1100px; margin:0 auto; }
+.section.active { display:block; animation:pop .35s cubic-bezier(.34,1.56,.64,1); }
+@keyframes pop { from { opacity:0; transform:scale(.97); } to { opacity:1; transform:scale(1); } }
+.ph { margin-bottom:32px; }
+.ph-eyebrow { font-family:'Unbounded',sans-serif; font-size:.62rem; letter-spacing:4px; text-transform:uppercase; color:var(--terra); margin-bottom:8px; }
+.ph-title { font-family:'Unbounded',sans-serif; font-size:2.2rem; font-weight:900; line-height:1.1; color:var(--ink); }
+.ph-title .hl { color:var(--terra); }
+.ph-sub { color:var(--muted); font-size:.9rem; margin-top:10px; font-style:italic; }
+.card { background:var(--card); border-radius:16px; padding:24px; border:2px solid var(--sand); }
+.card-lime { border-color:var(--lime); }
+.card-terra { border-color:var(--terra); }
+.card-sky { border-color:var(--sky); }
+.card-lavender { border-color:var(--lavender); }
+.g2 { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.g3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; }
+.g4 { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:12px; }
+
+/* HOME */
+.hero-blob { background:var(--moss); border-radius:24px; padding:40px; margin-bottom:24px; position:relative; overflow:hidden; }
+.hero-blob::before { content:''; position:absolute; width:320px; height:320px; border-radius:50%; background:radial-gradient(circle, rgba(196,232,74,.15) 0%, transparent 70%); right:-80px; top:-80px; }
+.hero-blob::after { content:''; position:absolute; width:200px; height:200px; border-radius:50%; background:radial-gradient(circle, rgba(196,103,58,.12) 0%, transparent 70%); left:-40px; bottom:-40px; }
+.hero-tag { display:inline-block; background:var(--lime); color:var(--moss); font-family:'Unbounded',sans-serif; font-size:.6rem; letter-spacing:2px; padding:4px 12px; border-radius:20px; font-weight:700; margin-bottom:14px; }
+.hero-blob h1 { font-family:'Unbounded',sans-serif; font-size:2.4rem; font-weight:900; color:#fff; line-height:1.1; }
+.hero-blob h1 em { color:var(--lime); font-style:normal; }
+.hero-blob p { color:rgba(255,255,255,.6); font-size:.9rem; margin-top:10px; }
+.pill-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:20px; }
+.pill { padding:8px 18px; border-radius:30px; font-family:'Unbounded',sans-serif; font-size:.65rem; letter-spacing:1px; font-weight:700; border:2px solid; }
+.pill-l { background:transparent; border-color:var(--lime); color:var(--lime); }
+.pill-p { background:transparent; border-color:var(--peach); color:var(--peach); }
+.pill-s { background:transparent; border-color:var(--sky); color:var(--sky); }
+.dash-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:20px; }
+.dash-tile { background:var(--card); border:2px solid var(--sand); border-radius:14px; padding:18px; text-align:center; cursor:pointer; transition:all .25s; position:relative; overflow:hidden; }
+.dash-tile:hover { border-color:var(--lime); transform:translateY(-4px); box-shadow:0 12px 32px rgba(0,0,0,.08); }
+.dash-tile::after { content:''; position:absolute; bottom:0; left:0; height:3px; width:0; background:var(--lime); transition:width .3s; }
+.dash-tile:hover::after { width:100%; }
+.dt-icon { font-size:2rem; margin-bottom:8px; }
+.dt-val { font-family:'Unbounded',sans-serif; font-size:1.4rem; font-weight:700; color:var(--ink); }
+.dt-lbl { font-size:.68rem; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); margin-top:4px; font-family:'Unbounded',sans-serif; }
+
+/* FERTILITY - Enhanced */
+.fert-ring { position:relative; width:160px; height:160px; margin:0 auto; }
+.fert-ring svg { transform:rotate(-90deg); }
+.fert-center { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; }
+.fert-day { font-family:'Unbounded',sans-serif; font-size:2rem; font-weight:900; color:var(--ink); }
+.fert-sub { font-size:.65rem; letter-spacing:2px; text-transform:uppercase; color:var(--muted); }
+.phase-card { border-radius:12px; padding:14px; margin-bottom:8px; border:2px solid; }
+.fert-input { width:100%; padding:10px 14px; border:2px solid var(--sand); border-radius:10px; font-family:'Lora',serif; font-size:.9rem; outline:none; background:var(--ivory); transition:border-color .2s; margin-bottom:10px; }
+.fert-input:focus { border-color:var(--terra); }
+
+/* Phase Timeline */
+.phase-timeline { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:8px; margin:16px 0; }
+.phase-block { border-radius:10px; padding:12px 8px; text-align:center; border:2px solid var(--sand); cursor:pointer; transition:all .2s; }
+.phase-block:hover { transform:translateY(-2px); }
+.phase-block.active-phase { border-width:3px; }
+.pb-emoji { font-size:1.4rem; display:block; margin-bottom:4px; }
+.pb-name { font-family:'Unbounded',sans-serif; font-size:.55rem; letter-spacing:1px; color:var(--muted); }
+.pb-days { font-size:.7rem; color:var(--muted); margin-top:2px; }
+
+/* BBT Chart */
+.bbt-chart { display:flex; align-items:flex-end; gap:3px; height:80px; padding:8px 0; }
+.bbt-bar { flex:1; border-radius:4px 4px 0 0; cursor:pointer; position:relative; transition:all .2s; min-width:8px; }
+.bbt-bar:hover { opacity:.8; }
+
+/* Cervical Mucus Tracker */
+.cm-type { padding:8px 14px; border-radius:20px; border:2px solid var(--sand); font-size:.78rem; cursor:pointer; transition:all .2s; display:inline-block; margin:3px; }
+.cm-type:hover, .cm-type.sel { background:rgba(196,103,58,.12); border-color:var(--terra); color:var(--terra); }
+
+/* Symptom log */
+.symptom-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; }
+.symptom-btn { padding:8px 6px; border-radius:8px; border:2px solid var(--sand); font-size:.72rem; text-align:center; cursor:pointer; transition:all .2s; }
+.symptom-btn:hover, .symptom-btn.sel { border-color:var(--terra); background:rgba(196,103,58,.08); color:var(--terra); }
+
+/* OPK Tracker */
+.opk-row { display:flex; gap:4px; }
+.opk-day { width:28px; height:40px; border-radius:6px; background:var(--sand); cursor:pointer; transition:all .2s; display:flex; align-items:center; justify-content:center; font-size:.6rem; font-family:'Unbounded',sans-serif; border:2px solid transparent; }
+.opk-day.low { background:rgba(126,200,212,.25); border-color:var(--sky); }
+.opk-day.high { background:rgba(196,103,58,.25); border-color:var(--terra); }
+.opk-day.peak { background:var(--terra); color:#fff; }
+
+/* ENERGY */
+.energy-wheel { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+.e-cell { border-radius:12px; padding:14px; text-align:center; border:2px solid var(--sand); cursor:pointer; transition:all .2s; position:relative; }
+.e-cell:hover, .e-cell.on { border-color:var(--lime); background:rgba(196,232,74,.08); }
+.e-cell.on .e-icon { transform:scale(1.2); }
+.e-icon { font-size:1.8rem; display:block; margin-bottom:6px; transition:transform .2s; }
+.e-name { font-family:'Unbounded',sans-serif; font-size:.62rem; letter-spacing:1px; color:var(--muted); }
+.energy-bar-group { margin-top:16px; }
+.e-bar-row { display:flex; align-items:center; gap:10px; margin:8px 0; font-size:.82rem; }
+.e-bar-label { width:90px; color:var(--muted); flex-shrink:0; }
+.e-bar-track { flex:1; height:8px; background:var(--sand); border-radius:8px; overflow:hidden; }
+.e-bar-fill { height:100%; border-radius:8px; transition:width .6s ease; }
+
+/* HYDRATION */
+.water-art { display:flex; gap:6px; flex-wrap:wrap; justify-content:center; margin:20px 0; }
+.drop { width:44px; height:56px; background:var(--sand); border-radius:50% 50% 50% 50% / 60% 60% 40% 40%; cursor:pointer; transition:all .3s; display:flex; align-items:center; justify-content:center; font-size:.7rem; font-weight:600; color:transparent; border:2px solid rgba(126,200,212,.3); }
+.drop.filled { background:linear-gradient(180deg, var(--sky), #4AAAC0); color:rgba(255,255,255,.9); border-color:var(--sky); }
+.drop:hover { transform:scale(1.1) translateY(-4px); }
+.hydro-stats { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; }
+.h-stat { background:var(--ivory); border-radius:10px; padding:12px; text-align:center; border:1px solid var(--sand); }
+.h-stat-val { font-family:'Unbounded',sans-serif; font-weight:700; font-size:1.2rem; color:var(--sky); }
+.h-stat-lbl { font-size:.68rem; text-transform:uppercase; letter-spacing:1px; color:var(--muted); margin-top:4px; }
+
+/* GOALS */
+.goal-item { display:flex; align-items:center; gap:14px; padding:14px; border-radius:12px; border:2px solid var(--sand); margin-bottom:8px; transition:all .2s; }
+.goal-item.done { background:rgba(196,232,74,.07); border-color:var(--lime); }
+.g-circle { width:28px; height:28px; border-radius:50%; border:2px solid var(--sand); display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; transition:all .2s; }
+.g-circle.done { background:var(--lime); border-color:var(--lime); color:var(--moss); font-size:.85rem; }
+.g-text { flex:1; }
+.g-title { font-weight:600; font-size:.9rem; }
+.g-sub { font-size:.75rem; color:var(--muted); margin-top:2px; }
+.g-cat { font-family:'Unbounded',sans-serif; font-size:.6rem; letter-spacing:1.5px; text-transform:uppercase; padding:3px 10px; border-radius:20px; flex-shrink:0; }
+.cat-n { background:rgba(196,232,74,.15); color:var(--sage); }
+.cat-f { background:rgba(196,103,58,.12); color:var(--terra); }
+.cat-m { background:rgba(126,200,212,.15); color:var(--sky); }
+.cat-b { background:rgba(240,168,130,.15); color:var(--peach); }
+.progress-ring-wrap { display:flex; justify-content:center; margin:16px 0; position:relative; }
+.prog-val { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; }
+.prog-num { font-family:'Unbounded',sans-serif; font-size:1.8rem; font-weight:900; color:var(--ink); }
+.prog-lbl { font-size:.65rem; letter-spacing:2px; text-transform:uppercase; color:var(--muted); }
+
+/* PAIN RELIEF - Enhanced */
+.pain-type-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:16px; }
+.pain-type-btn { padding:12px 8px; border-radius:12px; border:2px solid var(--sand); text-align:center; cursor:pointer; transition:all .2s; }
+.pain-type-btn:hover, .pain-type-btn.sel-pain-type { border-color:var(--terra); background:rgba(196,103,58,.08); }
+.pain-type-icon { font-size:1.6rem; display:block; margin-bottom:4px; }
+.pain-type-name { font-family:'Unbounded',sans-serif; font-size:.58rem; letter-spacing:1px; color:var(--muted); }
+.pain-scale { display:flex; gap:4px; }
+.pain-dot { width:32px; height:32px; border-radius:50%; border:2px solid var(--sand); display:flex; align-items:center; justify-content:center; font-size:.82rem; cursor:pointer; transition:all .2s; }
+.pain-dot:hover, .pain-dot.sel { border-color:var(--terra); background:rgba(196,103,58,.12); transform:scale(1.1); }
+.relief-protocol { border-radius:14px; padding:18px; margin-bottom:10px; border:2px solid var(--sand); cursor:pointer; transition:all .2s; }
+.relief-protocol:hover { border-color:var(--terra); transform:translateX(4px); }
+.rp-header { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+.rp-icon { font-size:1.8rem; }
+.rp-title { font-family:'Unbounded',sans-serif; font-size:.75rem; letter-spacing:1px; color:var(--ink); }
+.rp-evidence { font-size:.68rem; background:rgba(74,124,89,.1); color:var(--sage); border-radius:20px; padding:2px 10px; font-family:'Unbounded',sans-serif; letter-spacing:1px; }
+.rp-steps { list-style:none; font-size:.83rem; line-height:2; color:var(--muted); }
+.rp-steps li::before { content:'→ '; color:var(--terra); font-weight:700; }
+.rp-timing { font-size:.75rem; font-style:italic; color:var(--terra); margin-top:6px; }
+.pain-log-entry { display:flex; align-items:center; gap:10px; padding:8px 12px; background:var(--ivory); border-radius:8px; font-size:.8rem; margin-bottom:4px; border:1px solid var(--sand); }
+.ple-time { font-family:'Unbounded',sans-serif; font-size:.62rem; color:var(--muted); min-width:50px; }
+.ple-type { color:var(--terra); font-weight:600; }
+.ple-level { background:var(--terra); color:#fff; border-radius:10px; padding:1px 8px; font-family:'Unbounded',sans-serif; font-size:.6rem; margin-left:auto; }
+
+/* MINDFUL EATING - Enhanced */
+.meal-plate { position:relative; width:180px; height:180px; margin:0 auto 20px; }
+.plate-bg { width:100%; height:100%; border-radius:50%; background:var(--ivory); border:4px solid var(--sand); position:relative; overflow:hidden; }
+.me-tip { background:var(--ivory); border-left:4px solid var(--lime); padding:12px 16px; border-radius:0 10px 10px 0; margin-bottom:8px; font-size:.85rem; color:var(--ink); line-height:1.6; }
+.hunger-scale { display:flex; gap:4px; }
+.h-dot { flex:1; height:10px; border-radius:5px; background:var(--sand); cursor:pointer; transition:all .2s; }
+.h-dot.filled { background:var(--lime); }
+
+/* Eating Emotion Wheel */
+.emotion-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin:12px 0; }
+.emo-btn { padding:8px 4px; border-radius:8px; border:2px solid var(--sand); text-align:center; cursor:pointer; transition:all .2s; font-size:.7rem; }
+.emo-btn:hover, .emo-btn.sel { border-color:var(--sky); background:rgba(126,200,212,.1); color:var(--sky); }
+.emo-icon { font-size:1.2rem; display:block; margin-bottom:2px; }
+
+/* Meal Journal */
+.meal-journal-entry { padding:12px; border-radius:10px; background:var(--ivory); border:2px solid var(--sand); margin-bottom:8px; }
+.mje-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; }
+.mje-time { font-family:'Unbounded',sans-serif; font-size:.62rem; color:var(--muted); }
+.mje-hunger { font-size:.75rem; }
+.mje-food { font-size:.85rem; color:var(--ink); margin-bottom:4px; }
+.mje-mood { font-size:.78rem; color:var(--muted); font-style:italic; }
+
+/* Eating Pace Timer */
+.pace-timer { text-align:center; padding:20px; background:var(--ivory); border-radius:12px; border:2px solid var(--sand); }
+.pace-display { font-family:'Unbounded',sans-serif; font-size:3rem; font-weight:900; color:var(--ink); }
+.pace-lbl { font-size:.68rem; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-top:4px; }
+.pace-btn { padding:10px 24px; border-radius:10px; cursor:pointer; font-family:'Unbounded',sans-serif; font-size:.68rem; font-weight:700; letter-spacing:1px; border:none; transition:all .2s; margin:6px; }
+
+/* Food Craving Decoder */
+.craving-card { padding:14px; border-radius:12px; border:2px solid var(--sand); margin-bottom:8px; }
+.craving-header { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+.craving-emoji { font-size:1.6rem; }
+.craving-name { font-family:'Unbounded',sans-serif; font-size:.7rem; letter-spacing:1px; }
+.craving-meaning { font-size:.82rem; color:var(--muted); line-height:1.6; }
+.craving-fix { font-size:.78rem; color:var(--sage); margin-top:6px; font-style:italic; border-top:1px solid var(--sand); padding-top:6px; }
+
+/* AI Chat */
+.chat-box { height:380px; overflow-y:auto; background:var(--ivory); border:2px solid var(--sand); border-radius:14px; padding:18px; display:flex; flex-direction:column; gap:12px; margin-bottom:12px; }
+.msg-b { max-width:80%; padding:12px 16px; border-radius:14px; font-size:.87rem; line-height:1.6; }
+.msg-b.me { background:var(--moss); color:#fff; align-self:flex-end; border-bottom-right-radius:4px; }
+.msg-b.bot { background:var(--card); border:2px solid var(--sand); align-self:flex-start; border-bottom-left-radius:4px; }
+.chat-row { display:flex; gap:8px; }
+.chat-in { flex:1; padding:12px 16px; border:2px solid var(--sand); border-radius:10px; font-family:'Lora',serif; font-size:.88rem; background:var(--ivory); outline:none; transition:border-color .2s; }
+.chat-in:focus { border-color:var(--lime); }
+.chat-send-btn { background:var(--moss); color:var(--lime); border:none; border-radius:10px; padding:12px 22px; cursor:pointer; font-family:'Unbounded',sans-serif; font-size:.7rem; letter-spacing:1px; transition:all .2s; }
+.chat-send-btn:hover { background:var(--lime); color:var(--moss); }
+.chat-send-btn:disabled { opacity:.4; cursor:not-allowed; }
+.qc-row { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px; }
+.qc { padding:6px 14px; border-radius:20px; background:var(--ivory); border:2px solid var(--sand); font-family:'Unbounded',sans-serif; font-size:.6rem; letter-spacing:1px; cursor:pointer; transition:all .2s; color:var(--muted); }
+.qc:hover { border-color:var(--terra); color:var(--terra); background:rgba(196,103,58,.06); }
+.typing-dot { display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--muted); margin:0 2px; animation:typing 1.2s ease infinite; }
+.typing-dot:nth-child(2) { animation-delay:.2s; }
+.typing-dot:nth-child(3) { animation-delay:.4s; }
+@keyframes typing { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-8px)} }
+
+/* AI Planner */
+.ai-tab-row { display:flex; gap:6px; margin-bottom:16px; flex-wrap:wrap; }
+.ai-tab { padding:7px 16px; border-radius:8px; font-family:'Unbounded',sans-serif; font-size:.62rem; letter-spacing:1px; text-transform:uppercase; border:2px solid var(--sand); background:transparent; color:var(--muted); cursor:pointer; transition:all .2s; }
+.ai-tab.active, .ai-tab:hover { border-color:var(--lime); color:var(--moss); background:var(--lime); }
+.ai-output { min-height:300px; background:var(--ivory); border:2px solid var(--sand); border-radius:12px; padding:20px; font-size:.88rem; line-height:1.9; color:var(--ink); overflow-y:auto; max-height:500px; }
+.ai-form { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px; }
+.ai-form label { font-family:'Unbounded',sans-serif; font-size:.6rem; letter-spacing:2px; text-transform:uppercase; color:var(--muted); display:block; margin-bottom:5px; }
+.ai-form select, .ai-form input { width:100%; padding:10px 13px; border:2px solid var(--sand); border-radius:8px; font-family:'Lora',serif; font-size:.88rem; outline:none; background:var(--ivory); transition:border-color .2s; }
+.ai-form select:focus, .ai-form input:focus { border-color:var(--terra); }
+
+/* Relief Links */
+.rlink { display:flex; align-items:center; gap:12px; padding:13px 16px; background:var(--card); border:2px solid var(--sand); border-radius:12px; text-decoration:none; color:var(--ink); transition:all .2s; margin-bottom:8px; }
+.rlink:hover { border-color:var(--lime); transform:translateX(6px); }
+.rlink-icon { font-size:1.4rem; flex-shrink:0; width:36px; text-align:center; }
+.rlink-title { font-weight:600; font-size:.88rem; }
+.rlink-sub { font-size:.75rem; color:var(--muted); margin-top:2px; font-style:italic; }
+.rlink-arr { margin-left:auto; color:var(--terra); font-size:1.1rem; }
+
+/* UTILS */
+.btn { padding:11px 22px; border-radius:10px; cursor:pointer; font-family:'Unbounded',sans-serif; font-size:.68rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; border:none; transition:all .25s; }
+.btn-lime { background:var(--lime); color:var(--moss); }
+.btn-lime:hover { background:var(--lime2); transform:translateY(-2px); }
+.btn-terra { background:var(--terra); color:#fff; }
+.btn-terra:hover { opacity:.88; transform:translateY(-2px); }
+.btn-outline { background:transparent; border:2px solid var(--sand); color:var(--muted); }
+.btn-outline:hover { border-color:var(--lime); color:var(--moss); }
+.btn-sky { background:var(--sky); color:#fff; }
+.divider { border:none; border-top:2px solid var(--sand); margin:18px 0; }
+.label { font-family:'Unbounded',sans-serif; font-size:.6rem; letter-spacing:2.5px; text-transform:uppercase; color:var(--terra); margin-bottom:8px; display:block; }
+.flex { display:flex; align-items:center; }
+.between { justify-content:space-between; }
+.gap8 { gap:8px; }
+.mt12 { margin-top:12px; }
+.mt16 { margin-top:16px; }
+.mb8 { margin-bottom:8px; }
+.mb12 { margin-bottom:12px; }
+input[type=text], input[type=number], textarea, select { background:var(--ivory); border:2px solid var(--sand); border-radius:8px; padding:10px 14px; color:var(--ink); font-family:'Lora',serif; font-size:.88rem; outline:none; width:100%; transition:border-color .2s; }
+input:focus, textarea:focus, select:focus { border-color:var(--terra); }
+input::placeholder, textarea::placeholder { color:var(--muted); font-style:italic; }
+select option { background:#fff; }
+label { font-family:'Unbounded',sans-serif; font-size:.6rem; letter-spacing:2px; text-transform:uppercase; color:var(--muted); display:block; margin-bottom:5px; }
+.toast { position:fixed; bottom:24px; right:24px; z-index:9999; background:var(--moss); color:var(--lime); border:2px solid var(--lime); padding:12px 22px; border-radius:12px; font-family:'Unbounded',sans-serif; font-size:.68rem; letter-spacing:1.5px; transform:translateY(80px); opacity:0; transition:all .3s; }
+.toast.show { transform:translateY(0); opacity:1; }
+.tag-chip { padding:5px 13px; border-radius:20px; border:2px solid var(--sand); font-size:.78rem; cursor:pointer; transition:all .2s; display:inline-block; margin:3px; }
+.tag-chip:hover, .tag-chip.sel { background:rgba(196,103,58,.12); border-color:var(--terra); color:var(--terra); }
+.tag-chip-lime:hover, .tag-chip-lime.sel { background:rgba(196,232,74,.15); border-color:var(--lime); color:var(--sage); }
+.ec-tag { padding:5px 13px; border-radius:20px; border:2px solid var(--sand); font-size:.78rem; cursor:pointer; transition:all .2s; display:inline-block; margin:2px; }
+.ec-tag:hover, .ec-tag.sel { background:rgba(196,232,74,.15); border-color:var(--lime); color:var(--sage); }
+.sel-tag { background:rgba(196,103,58,.12)!important; border-color:var(--terra)!important; color:var(--terra)!important; }
+
+@media(max-width:680px) {
+  .g2,.g3,.g4,.dash-grid,.ai-form,.phase-timeline,.pain-type-grid,.emotion-grid { grid-template-columns:1fr 1fr; }
+  .nav-tabs { overflow-x:auto; }
+  .nav-tab { font-size:.5rem; padding:6px 8px; }
+  .section { padding:16px; }
+  .ph-title { font-size:1.5rem; }
+  .hero-blob h1 { font-size:1.6rem; }
+  body { cursor:auto; }
+  .cursor, .cursor-ring { display:none; }
+}
+</style>
+</head>
+<body>
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="curRing"></div>
+
+<nav>
+  <div class="logo">VIVA <sub>wellness</sub></div>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="go('home')">Home</button>
+    <button class="nav-tab" onclick="go('fertility')">Fertility</button>
+    <button class="nav-tab" onclick="go('energy')">Energy</button>
+    <button class="nav-tab" onclick="go('hydration')">Hydration+</button>
+    <button class="nav-tab" onclick="go('goals')">Goals</button>
+    <button class="nav-tab" onclick="go('relief')">Pain Relief</button>
+    <button class="nav-tab" onclick="go('eating')">Mindful Eating</button>
+    <button class="nav-tab" onclick="go('planner')">AI Planner</button>
+    <button class="nav-tab" onclick="go('chat')">Live Coach</button>
+  </div>
+</nav>
+
+<!-- HOME -->
+<div id="home" class="section active">
+  <div class="hero-blob">
+    <div class="hero-tag">YOUR DAILY COMMAND CENTER</div>
+    <h1>Hello, <em>beautiful.</em><br>Ready to thrive?</h1>
+    <p id="hero-date-txt"></p>
+    <div class="pill-row">
+      <div class="pill pill-l">✦ Holistic Tracking</div>
+      <div class="pill pill-p">✦ AI-Powered Plans</div>
+      <div class="pill pill-s">✦ Evidence-Based</div>
+    </div>
+  </div>
+  <div class="dash-grid mb12">
+    <div class="dash-tile" onclick="go('fertility')"><div class="dt-icon">🌱</div><div class="dt-val" id="d-fert">Day 14</div><div class="dt-lbl">Fertility Window</div></div>
+    <div class="dash-tile" onclick="go('energy')"><div class="dt-icon">⚡</div><div class="dt-val" id="d-nrg">74%</div><div class="dt-lbl">Energy Score</div></div>
+    <div class="dash-tile" onclick="go('hydration')"><div class="dt-icon">💧</div><div class="dt-val" id="d-hyd">1.6L</div><div class="dt-lbl">Hydrated</div></div>
+    <div class="dash-tile" onclick="go('goals')"><div class="dt-icon">🎯</div><div class="dt-val" id="d-goal">4/7</div><div class="dt-lbl">Goals Done</div></div>
+  </div>
+  <div class="g2">
+    <div class="card card-lime">
+      <span class="label">Today's Intention</span>
+      <div id="intention-txt" style="font-size:1.05rem;line-height:1.8;font-style:italic;color:var(--ink);"></div>
+      <button class="btn btn-lime mt12" onclick="newIntention()">New Intention ↻</button>
+    </div>
+    <div class="card">
+      <span class="label">Quick Navigation</span>
+      <div class="g2" style="gap:8px;">
+        <div onclick="go('fertility')" style="padding:12px;border:2px solid var(--sand);border-radius:10px;cursor:pointer;text-align:center;transition:all .2s;" onmouseover="this.style.borderColor='var(--lime)'" onmouseout="this.style.borderColor='var(--sand)'"><div style="font-size:1.4rem;">🌱</div><div style="font-family:'Unbounded',sans-serif;font-size:.58rem;letter-spacing:1px;color:var(--muted);margin-top:5px;">Fertility</div></div>
+        <div onclick="go('relief')" style="padding:12px;border:2px solid var(--sand);border-radius:10px;cursor:pointer;text-align:center;transition:all .2s;" onmouseover="this.style.borderColor='var(--terra)'" onmouseout="this.style.borderColor='var(--sand)'"><div style="font-size:1.4rem;">💆</div><div style="font-family:'Unbounded',sans-serif;font-size:.58rem;letter-spacing:1px;color:var(--muted);margin-top:5px;">Pain Relief</div></div>
+        <div onclick="go('eating')" style="padding:12px;border:2px solid var(--sand);border-radius:10px;cursor:pointer;text-align:center;transition:all .2s;" onmouseover="this.style.borderColor='var(--sky)'" onmouseout="this.style.borderColor='var(--sand)'"><div style="font-size:1.4rem;">🥣</div><div style="font-family:'Unbounded',sans-serif;font-size:.58rem;letter-spacing:1px;color:var(--muted);margin-top:5px;">Mindful Eat</div></div>
+        <div onclick="go('planner')" style="padding:12px;border:2px solid var(--sand);border-radius:10px;cursor:pointer;text-align:center;transition:all .2s;" onmouseover="this.style.borderColor='var(--lime)'" onmouseout="this.style.borderColor='var(--sand)'"><div style="font-size:1.4rem;">✨</div><div style="font-family:'Unbounded',sans-serif;font-size:.58rem;letter-spacing:1px;color:var(--muted);margin-top:5px;">AI Planner</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FERTILITY - DEEP -->
+<div id="fertility" class="section">
+  <div class="ph"><div class="ph-eyebrow">Cycle & Fertility</div><div class="ph-title">Know Your <span class="hl">Window</span></div><div class="ph-sub">BBT, OPK, cervical mucus, symptoms — full fertility awareness method</div></div>
+  <div class="g2">
+    <!-- Left Column -->
+    <div>
+      <div class="card card-terra mb12">
+        <span class="label">Cycle Setup</span>
+        <div class="g2" style="gap:10px;margin-bottom:12px;">
+          <div><label>Last Period Start</label><input type="text" id="f-last" placeholder="Feb 12" oninput="recalcFertility()"></div>
+          <div><label>Cycle Length (days)</label><input type="number" id="f-len" value="28" min="21" max="35" oninput="recalcFertility()"></div>
+          <div><label>Luteal Phase (days)</label><input type="number" id="f-luteal" value="14" min="10" max="16" oninput="recalcFertility()"></div>
+          <div><label>Period Duration (days)</label><input type="number" id="f-period" value="5" min="2" max="8"></div>
+        </div>
+        <!-- Cycle Ring -->
+        <div class="fert-ring" style="margin-bottom:16px;">
+          <svg width="160" height="160" viewBox="0 0 160 160">
+            <circle cx="80" cy="80" r="68" fill="none" stroke="var(--sand)" stroke-width="10"/>
+            <circle id="fert-arc" cx="80" cy="80" r="68" fill="none" stroke="var(--terra)" stroke-width="10" stroke-dasharray="427" stroke-dashoffset="213" stroke-linecap="round"/>
+          </svg>
+          <div class="fert-center"><div class="fert-day" id="fert-day-num">14</div><div class="fert-sub" id="fert-day-of">of 28</div></div>
+        </div>
+        <div style="text-align:center;margin-bottom:14px;"><span id="phase-badge" style="background:rgba(196,103,58,.12);border:2px solid var(--terra);color:var(--terra);padding:6px 18px;border-radius:20px;font-family:'Unbounded',sans-serif;font-size:.65rem;letter-spacing:2px;">🌟 PEAK FERTILE WINDOW</span></div>
+        <div id="phase-info" class="phase-card" style="border-color:var(--terra);background:rgba(196,103,58,.05);">
+          <div style="font-family:'Unbounded',sans-serif;font-size:.65rem;letter-spacing:1.5px;color:var(--terra);margin-bottom:6px;">OVULATORY PHASE</div>
+          <p style="font-size:.85rem;color:var(--muted);line-height:1.7;">Estrogen peaks, LH surges. Energy is highest. Best days for demanding tasks & conception.</p>
+        </div>
+      </div>
+
+      <!-- Phase Timeline -->
+      <div class="card mb12">
+        <span class="label">4-Phase Cycle Map</span>
+        <div class="phase-timeline">
+          <div class="phase-block" style="border-color:var(--terra);background:rgba(196,103,58,.05);" onclick="showPhaseDetail('menstrual')">
+            <span class="pb-emoji">🩸</span>
+            <div class="pb-name">Menstrual</div>
+            <div class="pb-days" id="pt-men">Days 1–5</div>
+          </div>
+          <div class="phase-block" style="border-color:var(--sky);background:rgba(126,200,212,.05);" onclick="showPhaseDetail('follicular')">
+            <span class="pb-emoji">🌱</span>
+            <div class="pb-name">Follicular</div>
+            <div class="pb-days" id="pt-fol">Days 6–13</div>
+          </div>
+          <div class="phase-block active-phase" style="border-color:var(--lime);background:rgba(196,232,74,.08);" onclick="showPhaseDetail('ovulatory')">
+            <span class="pb-emoji">🌟</span>
+            <div class="pb-name">Ovulatory</div>
+            <div class="pb-days" id="pt-ov">Days 14–16</div>
+          </div>
+          <div class="phase-block" style="border-color:var(--lavender);background:rgba(184,169,217,.05);" onclick="showPhaseDetail('luteal')">
+            <span class="pb-emoji">🌙</span>
+            <div class="pb-name">Luteal</div>
+            <div class="pb-days" id="pt-lut">Days 17–28</div>
+          </div>
+        </div>
+        <div id="phase-detail-box" style="background:var(--ivory);border-radius:10px;padding:14px;font-size:.84rem;line-height:1.8;color:var(--muted);display:none;margin-top:8px;"></div>
+      </div>
+
+      <!-- OPK Tracker -->
+      <div class="card mb12">
+        <span class="label">OPK (Ovulation Test) Tracker — Days 8–20</span>
+        <div class="opk-row" id="opk-row"></div>
+        <div style="display:flex;gap:14px;margin-top:8px;font-size:.75rem;color:var(--muted);">
+          <span><span style="display:inline-block;width:12px;height:12px;background:rgba(126,200,212,.3);border-radius:3px;margin-right:4px;"></span>Low</span>
+          <span><span style="display:inline-block;width:12px;height:12px;background:rgba(196,103,58,.25);border-radius:3px;margin-right:4px;"></span>High</span>
+          <span><span style="display:inline-block;width:12px;height:12px;background:var(--terra);border-radius:3px;margin-right:4px;"></span>Peak/LH Surge</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column -->
+    <div>
+      <!-- BBT Chart -->
+      <div class="card mb12">
+        <span class="label">BBT (Basal Body Temp) Chart</span>
+        <div style="font-size:.78rem;color:var(--muted);margin-bottom:8px;">Tap bars to adjust temperature readings. Rise after ovulation = confirmed ovulation 🌡️</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+          <span style="font-size:.65rem;color:var(--muted);">97.0°F</span>
+          <span style="font-size:.65rem;color:var(--terra);">↑ Temp rises after ovulation</span>
+          <span style="font-size:.65rem;color:var(--muted);">98.6°F</span>
+        </div>
+        <div class="bbt-chart" id="bbt-chart"></div>
+        <div style="display:flex;justify-content:space-between;margin-top:4px;font-size:.6rem;color:var(--muted);font-family:'Unbounded',sans-serif;">
+          <span>Day 1</span><span>Day 7</span><span>Day 14</span><span>Day 21</span><span>Day 28</span>
+        </div>
+        <div style="margin-top:10px;display:flex;align-items:center;gap:8px;">
+          <input type="number" id="bbt-input" placeholder="98.2°F" step="0.1" min="97.0" max="99.5" style="width:120px;margin-bottom:0;">
+          <button class="btn btn-terra" style="padding:10px 16px;" onclick="addBBT()">Log BBT</button>
+          <span id="bbt-confirm" style="font-size:.75rem;color:var(--sage);"></span>
+        </div>
+      </div>
+
+      <!-- Cervical Mucus -->
+      <div class="card mb12">
+        <span class="label">Cervical Mucus (CM) — Today's Type</span>
+        <div>
+          <span class="cm-type" onclick="selCM(this,'Dry — No mucus (post-period, low fertility)')">🔴 Dry</span>
+          <span class="cm-type" onclick="selCM(this,'Sticky — Low fertility window')">🟡 Sticky</span>
+          <span class="cm-type" onclick="selCM(this,'Creamy — Approaching fertile window')">🟠 Creamy</span>
+          <span class="cm-type" onclick="selCM(this,'Watery — Fertile! Sperm can survive 5 days')">🔵 Watery</span>
+          <span class="cm-type" onclick="selCM(this,'Egg White (EWCM) — Peak fertile! Ovulation imminent')">⚪ Egg White</span>
+        </div>
+        <div id="cm-desc" style="margin-top:10px;font-size:.82rem;color:var(--muted);font-style:italic;"></div>
+      </div>
+
+      <!-- Today's Fertility Symptoms -->
+      <div class="card mb12">
+        <span class="label">Today's Fertility Symptoms</span>
+        <div class="symptom-grid">
+          <div class="symptom-btn" onclick="this.classList.toggle('sel')">💧 Wet CM</div>
+          <div class="symptom-btn" onclick="this.classList.toggle('sel')">🌡️ BBT Rise</div>
+          <div class="symptom-btn" onclick="this.classList.toggle('sel')">💫 Mittelschmerz</div>
+          <div class="symptom-btn" onclick="this.classList.toggle('sel')">❤️ High Libido</div>
+          <div class="symptom-btn" onclick="this.classList.toggle('sel')">✨ Glowing Skin</div>
+          <div class="symptom-btn" onclick="this.classList.toggle('sel')">😴 Fatigue</div>
+          <div class="symptom-btn" onclick="this.classList.toggle('sel')">🤱 Breast Tender</div>
+          <div class="symptom-btn" onclick="this.classList.toggle('sel')">😟 Mood Swings</div>
+          <div class="symptom-btn" onclick="this.classList.toggle('sel')">🧠 Brain Fog</div>
+          <div class="symptom-btn" onclick="this.classList.toggle('sel')">🌸 Cervix High</div>
+          <div class="symptom-btn" onclick="this.classList.toggle('sel')">🩸 Spotting</div>
+          <div class="symptom-btn" onclick="this.classList.toggle('sel')">💊 Taken OPK</div>
+        </div>
+        <button class="btn btn-terra mt12" onclick="saveFertSymptoms()" style="width:100%">Save Today's Data</button>
+      </div>
+
+      <!-- Fertility Notes -->
+      <div class="card">
+        <span class="label">Daily Fertility Notes</span>
+        <textarea id="fert-notes" style="min-height:70px;margin-bottom:10px;" placeholder="Any additional observations — stress, sleep quality, intimacy, medications..."></textarea>
+        <div style="font-size:.8rem;color:var(--muted);font-style:italic;">💡 <strong style="color:var(--ink);">Pro Tip:</strong> Track 3+ cycles for pattern recognition. Combine OPK + BBT + CM for highest accuracy (Symptothermal Method — 99.6% effective).</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ENERGY -->
+<div id="energy" class="section">
+  <div class="ph"><div class="ph-eyebrow">Vitality & Energy</div><div class="ph-title">Your Energy <span class="hl">Dashboard</span></div><div class="ph-sub">Track, understand, and optimize your daily energy levels</div></div>
+  <div class="g2">
+    <div class="card card-lime">
+      <span class="label">Rate Energy Areas</span>
+      <div class="energy-wheel" id="e-wheel">
+        <div class="e-cell on" onclick="toggleE(this)"><span class="e-icon">🧠</span><div class="e-name">Mental</div></div>
+        <div class="e-cell" onclick="toggleE(this)"><span class="e-icon">💪</span><div class="e-name">Physical</div></div>
+        <div class="e-cell on" onclick="toggleE(this)"><span class="e-icon">❤️</span><div class="e-name">Emotional</div></div>
+        <div class="e-cell" onclick="toggleE(this)"><span class="e-icon">🌟</span><div class="e-name">Spiritual</div></div>
+        <div class="e-cell on" onclick="toggleE(this)"><span class="e-icon">🫀</span><div class="e-name">Social</div></div>
+        <div class="e-cell on" onclick="toggleE(this)"><span class="e-icon">🎨</span><div class="e-name">Creative</div></div>
+      </div>
+      <hr class="divider">
+      <span class="label">Energy Level Bars</span>
+      <div class="energy-bar-group">
+        <div class="e-bar-row"><span class="e-bar-label">Morning</span><div class="e-bar-track"><div class="e-bar-fill" style="width:85%;background:var(--lime);"></div></div><span style="color:var(--muted);font-size:.78rem;width:28px;">85</span></div>
+        <div class="e-bar-row"><span class="e-bar-label">Midday</span><div class="e-bar-track"><div class="e-bar-fill" style="width:70%;background:var(--sky);"></div></div><span style="color:var(--muted);font-size:.78rem;width:28px;">70</span></div>
+        <div class="e-bar-row"><span class="e-bar-label">Afternoon</span><div class="e-bar-track"><div class="e-bar-fill" style="width:50%;background:var(--peach);"></div></div><span style="color:var(--muted);font-size:.78rem;width:28px;">50</span></div>
+        <div class="e-bar-row"><span class="e-bar-label">Evening</span><div class="e-bar-track"><div class="e-bar-fill" style="width:65%;background:var(--sage);"></div></div><span style="color:var(--muted);font-size:.78rem;width:28px;">65</span></div>
+      </div>
+      <button class="btn btn-lime mt12" onclick="toast('Energy log saved ✦')" style="width:100%">Save Energy Log</button>
+    </div>
+    <div>
+      <div class="card mb12">
+        <span class="label">Energy Drains — Select Yours</span>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;">
+          <span class="ec-tag" onclick="toggleTag(this)">Poor sleep</span>
+          <span class="ec-tag" onclick="toggleTag(this)">Skipped meals</span>
+          <span class="ec-tag" onclick="toggleTag(this)">Dehydrated</span>
+          <span class="ec-tag" onclick="toggleTag(this)">High stress</span>
+          <span class="ec-tag" onclick="toggleTag(this)">Iron low</span>
+          <span class="ec-tag" onclick="toggleTag(this)">Thyroid issues</span>
+          <span class="ec-tag" onclick="toggleTag(this)">Over-caffeinated</span>
+          <span class="ec-tag" onclick="toggleTag(this)">Hormonal dip</span>
+        </div>
+      </div>
+      <div class="card mb12">
+        <span class="label">Energy Boosters</span>
+        <ul style="list-style:none;font-size:.85rem;line-height:2.2;color:var(--muted);">
+          <li>🌞 <strong style="color:var(--ink);">Morning sunlight</strong> — 10 min resets circadian clock</li>
+          <li>🥩 <strong style="color:var(--ink);">Iron-rich breakfast</strong> — oatmeal + spinach + pumpkin seeds</li>
+          <li>💧 <strong style="color:var(--ink);">500ml water</strong> upon waking — before coffee</li>
+          <li>🚶‍♀️ <strong style="color:var(--ink);">10-min walk</strong> beats coffee for sustainable energy</li>
+          <li>🍫 <strong style="color:var(--ink);">Dark chocolate</strong> (85%) — magnesium + mild stimulant</li>
+          <li>🧘 <strong style="color:var(--ink);">Breathwork</strong> — 2-min box breathing = instant clarity</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HYDRATION PLUS -->
+<div id="hydration" class="section">
+  <div class="ph"><div class="ph-eyebrow">Hydration Science</div><div class="ph-title">Hydration <span class="hl">Plus</span></div><div class="ph-sub">Track water, electrolytes & hydrating foods — not just glasses</div></div>
+  <div class="g2">
+    <div class="card card-sky">
+      <span class="label">Daily Water (tap a drop)</span>
+      <div class="water-art" id="drops-wrap"></div>
+      <div class="hydro-stats">
+        <div class="h-stat"><div class="h-stat-val" id="hy-ml">1600ml</div><div class="h-stat-lbl">Consumed</div></div>
+        <div class="h-stat"><div class="h-stat-val">2500ml</div><div class="h-stat-lbl">Goal</div></div>
+        <div class="h-stat"><div class="h-stat-val" id="hy-pct">64%</div><div class="h-stat-lbl">Progress</div></div>
+      </div>
+      <hr class="divider">
+      <span class="label">Electrolyte Tracker</span>
+      <div style="font-size:.84rem;">
+        <div class="flex between mb8"><span style="color:var(--muted);">🧂 Sodium</span><span style="color:var(--sky);font-family:'Unbounded',sans-serif;font-size:.78rem;">1200 / 2300 mg</span></div>
+        <div class="flex between mb8"><span style="color:var(--muted);">🍌 Potassium</span><span style="color:var(--sky);font-family:'Unbounded',sans-serif;font-size:.78rem;">1800 / 2600 mg</span></div>
+        <div class="flex between mb8"><span style="color:var(--muted);">🥦 Magnesium</span><span style="color:var(--sky);font-family:'Unbounded',sans-serif;font-size:.78rem;">180 / 310 mg</span></div>
+        <div class="flex between"><span style="color:var(--muted);">🦴 Calcium</span><span style="color:var(--sky);font-family:'Unbounded',sans-serif;font-size:.78rem;">620 / 1000 mg</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="card mb12">
+        <span class="label">Hydrating Foods Eaten Today</span>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;">
+          <span onclick="addHydFood(this,120)" style="padding:6px 13px;border-radius:20px;border:2px solid var(--sand);font-size:.82rem;cursor:pointer;transition:all .2s;" onmouseover="this.style.borderColor='var(--sky)'" onmouseout="this.style.borderColor='var(--sand)'">🥒 Cucumber +120ml</span>
+          <span onclick="addHydFood(this,150)" style="padding:6px 13px;border-radius:20px;border:2px solid var(--sand);font-size:.82rem;cursor:pointer;transition:all .2s;" onmouseover="this.style.borderColor='var(--sky)'" onmouseout="this.style.borderColor='var(--sand)'">🍉 Watermelon +150ml</span>
+          <span onclick="addHydFood(this,95)" style="padding:6px 13px;border-radius:20px;border:2px solid var(--sand);font-size:.82rem;cursor:pointer;transition:all .2s;" onmouseover="this.style.borderColor='var(--sky)'" onmouseout="this.style.borderColor='var(--sand)'">🍓 Strawberries +95ml</span>
+          <span onclick="addHydFood(this,80)" style="padding:6px 13px;border-radius:20px;border:2px solid var(--sand);font-size:.82rem;cursor:pointer;transition:all .2s;" onmouseover="this.style.borderColor='var(--sky)'" onmouseout="this.style.borderColor='var(--sand)'">🥬 Lettuce +80ml</span>
+          <span onclick="addHydFood(this,110)" style="padding:6px 13px;border-radius:20px;border:2px solid var(--sand);font-size:.82rem;cursor:pointer;transition:all .2s;" onmouseover="this.style.borderColor='var(--sky)'" onmouseout="this.style.borderColor='var(--sand)'">🍊 Orange +110ml</span>
+          <span onclick="addHydFood(this,200)" style="padding:6px 13px;border-radius:20px;border:2px solid var(--sand);font-size:.82rem;cursor:pointer;transition:all .2s;" onmouseover="this.style.borderColor='var(--sky)'" onmouseout="this.style.borderColor='var(--sand)'">🥛 Milk +200ml</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GOALS -->
+<div id="goals" class="section">
+  <div class="ph"><div class="ph-eyebrow">Wellness Goals</div><div class="ph-title">Your <span class="hl">Goal</span> Board</div><div class="ph-sub">Set, track, and celebrate your wellness milestones</div></div>
+  <div class="g2">
+    <div class="card card-lime">
+      <span class="label">Active Goals</span>
+      <div id="goal-list">
+        <div class="goal-item done" onclick="toggleGoal(this)"><div class="g-circle done">✓</div><div class="g-text"><div class="g-title">Drink 2.5L water daily</div><div class="g-sub">Day 8 streak 🔥</div></div><span class="g-cat cat-n">Nutrition</span></div>
+        <div class="goal-item done" onclick="toggleGoal(this)"><div class="g-circle done">✓</div><div class="g-text"><div class="g-title">Take vitamins every morning</div><div class="g-sub">Day 12 streak 🔥</div></div><span class="g-cat cat-n">Nutrition</span></div>
+        <div class="goal-item done" onclick="toggleGoal(this)"><div class="g-circle done">✓</div><div class="g-text"><div class="g-title">20-min walk after lunch</div><div class="g-sub">Done today ✓</div></div><span class="g-cat cat-f">Fitness</span></div>
+        <div class="goal-item done" onclick="toggleGoal(this)"><div class="g-circle done">✓</div><div class="g-text"><div class="g-title">5-min morning meditation</div><div class="g-sub">Done today ✓</div></div><span class="g-cat cat-m">Mental</span></div>
+        <div class="goal-item" onclick="toggleGoal(this)"><div class="g-circle"></div><div class="g-text"><div class="g-title">No phone 1hr before bed</div><div class="g-sub">Set for tonight</div></div><span class="g-cat cat-m">Mental</span></div>
+        <div class="goal-item" onclick="toggleGoal(this)"><div class="g-circle"></div><div class="g-text"><div class="g-title">Eat 5 portions veg & fruit</div><div class="g-sub">3 of 5 today</div></div><span class="g-cat cat-n">Nutrition</span></div>
+        <div class="goal-item" onclick="toggleGoal(this)"><div class="g-circle"></div><div class="g-text"><div class="g-title">Journal before sleep</div><div class="g-sub">Pending</div></div><span class="g-cat cat-b">Body</span></div>
+      </div>
+      <hr class="divider">
+      <div class="flex between" style="font-size:.84rem;"><span style="color:var(--muted);">Daily progress</span><span style="font-family:'Unbounded',sans-serif;font-weight:700;color:var(--sage);" id="goal-pct">57%</span></div>
+    </div>
+    <div>
+      <div class="card mb12">
+        <span class="label">Weekly Progress Ring</span>
+        <div class="progress-ring-wrap">
+          <svg width="140" height="140" viewBox="0 0 140 140">
+            <circle cx="70" cy="70" r="58" fill="none" stroke="var(--sand)" stroke-width="12"/>
+            <circle cx="70" cy="70" r="58" fill="none" stroke="var(--lime)" stroke-width="12" stroke-dasharray="364" stroke-dashoffset="156" stroke-linecap="round" transform="rotate(-90 70 70)"/>
+          </svg>
+          <div class="prog-val"><div class="prog-num">57%</div><div class="prog-lbl">This Week</div></div>
+        </div>
+        <div style="text-align:center;font-size:.82rem;color:var(--muted);">4 of 7 daily goals completed</div>
+      </div>
+      <div class="card mb12">
+        <span class="label">Add New Goal</span>
+        <input type="text" id="new-goal-txt" placeholder="e.g. Sleep by 10:30 PM every night" style="margin-bottom:10px;">
+        <select id="new-goal-cat" style="margin-bottom:10px;">
+          <option value="cat-n">Nutrition</option>
+          <option value="cat-f">Fitness</option>
+          <option value="cat-m">Mental</option>
+          <option value="cat-b">Body</option>
+        </select>
+        <button class="btn btn-lime" onclick="addGoal()" style="width:100%">+ Add Goal</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAIN RELIEF - DEEP -->
+<div id="relief" class="section">
+  <div class="ph"><div class="ph-eyebrow">Period & Body Pain</div><div class="ph-title">Natural Pain <span class="hl">Relief</span></div><div class="ph-sub">Log your pain, get specific evidence-based relief protocols tailored to your pain type</div></div>
+  <div class="g2">
+    <!-- LEFT: Pain Logger -->
+    <div>
+      <div class="card card-terra mb12">
+        <span class="label">Step 1 — Select Pain Type</span>
+        <div class="pain-type-grid" id="pain-type-grid">
+          <div class="pain-type-btn" onclick="selPainType(this,'cramps')"><span class="pain-type-icon">🩸</span><div class="pain-type-name">Cramps</div></div>
+          <div class="pain-type-btn" onclick="selPainType(this,'back')"><span class="pain-type-icon">🔙</span><div class="pain-type-name">Back Pain</div></div>
+          <div class="pain-type-btn" onclick="selPainType(this,'headache')"><span class="pain-type-icon">🧠</span><div class="pain-type-name">Headache</div></div>
+          <div class="pain-type-btn" onclick="selPainType(this,'bloating')"><span class="pain-type-icon">🫃</span><div class="pain-type-name">Bloating</div></div>
+          <div class="pain-type-btn" onclick="selPainType(this,'breast')"><span class="pain-type-icon">💕</span><div class="pain-type-name">Breast Pain</div></div>
+          <div class="pain-type-btn" onclick="selPainType(this,'joint')"><span class="pain-type-icon">🦴</span><div class="pain-type-name">Joint Pain</div></div>
+        </div>
+
+        <span class="label" style="margin-top:4px;">Step 2 — Rate Intensity (1–10)</span>
+        <div class="pain-scale" id="pain-scale" style="margin-bottom:14px;">
+          <div class="pain-dot" onclick="selPain(this,1)">1</div>
+          <div class="pain-dot" onclick="selPain(this,2)">2</div>
+          <div class="pain-dot" onclick="selPain(this,3)">3</div>
+          <div class="pain-dot sel" onclick="selPain(this,4)">4</div>
+          <div class="pain-dot" onclick="selPain(this,5)">5</div>
+          <div class="pain-dot" onclick="selPain(this,6)">6</div>
+          <div class="pain-dot" onclick="selPain(this,7)">7</div>
+          <div class="pain-dot" onclick="selPain(this,8)">8</div>
+          <div class="pain-dot" onclick="selPain(this,9)">9</div>
+          <div class="pain-dot" onclick="selPain(this,10)">10</div>
+        </div>
+        <div id="pain-level-display" style="font-size:.82rem;color:var(--terra);font-style:italic;margin-bottom:14px;">Level 4 — Noticeable pain</div>
+
+        <span class="label">Step 3 — Associated Symptoms</span>
+        <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px;">
+          <span class="tag-chip" onclick="this.classList.toggle('sel')">Nausea</span>
+          <span class="tag-chip" onclick="this.classList.toggle('sel')">Diarrhea</span>
+          <span class="tag-chip" onclick="this.classList.toggle('sel')">Vomiting</span>
+          <span class="tag-chip" onclick="this.classList.toggle('sel')">Fatigue</span>
+          <span class="tag-chip" onclick="this.classList.toggle('sel')">Light sensitivity</span>
+          <span class="tag-chip" onclick="this.classList.toggle('sel')">Sound sensitivity</span>
+          <span class="tag-chip" onclick="this.classList.toggle('sel')">Chills</span>
+          <span class="tag-chip" onclick="this.classList.toggle('sel')">Dizziness</span>
+        </div>
+
+        <span class="label">Step 4 — Notes</span>
+        <textarea id="pain-notes" style="min-height:55px;margin-bottom:12px;" placeholder="Any additional context — timing, triggers, what helped before..."></textarea>
+        <button class="btn btn-terra" onclick="savePainLog()" style="width:100%">💾 Save Pain Log</button>
+      </div>
+
+      <!-- Pain Log History -->
+      <div class="card">
+        <span class="label">Recent Pain Log</span>
+        <div id="pain-log-list">
+          <div class="pain-log-entry"><span class="ple-time">Today 9am</span><span class="ple-type">🩸 Cramps</span><span style="font-size:.8rem;color:var(--muted);">+ Fatigue</span><span class="ple-level">4/10</span></div>
+          <div class="pain-log-entry"><span class="ple-time">Yesterday</span><span class="ple-type">🧠 Headache</span><span style="font-size:.8rem;color:var(--muted);">+ Light sensitivity</span><span class="ple-level">6/10</span></div>
+          <div class="pain-log-entry"><span class="ple-time">Feb 24</span><span class="ple-type">🩸 Cramps</span><span style="font-size:.8rem;color:var(--muted);">+ Nausea</span><span class="ple-level">7/10</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Relief Protocols by Type -->
+    <div>
+      <div id="relief-protocols">
+        <!-- Shown based on pain type selected — default shows cramps -->
+        <div id="relief-cramps">
+          <span class="label" style="margin-bottom:12px;">🩸 Dysmenorrhea Relief Protocol</span>
+
+          <div class="relief-protocol">
+            <div class="rp-header">
+              <span class="rp-icon">🌿</span>
+              <div>
+                <div class="rp-title">Ginger + Turmeric Tea Protocol</div>
+                <span class="rp-evidence">LEVEL A EVIDENCE</span>
+              </div>
+            </div>
+            <ul class="rp-steps">
+              <li>Steep 1 inch fresh ginger + ½ tsp turmeric in 300ml boiling water</li>
+              <li>Simmer 10 min, strain, add lemon + raw honey</li>
+              <li>Drink 2–3 cups daily starting 2 days before period</li>
+              <li>Ginger (250mg) equals ibuprofen for dysmenorrhea (RCT evidence)</li>
+            </ul>
+            <div class="rp-timing">⏱ Start 2 days before expected period. Effects seen within 48 hours.</div>
+            <a href="https://www.google.com/search?q=ginger+turmeric+period+cramps+clinical+study" target="_blank" style="font-size:.72rem;color:var(--terra);text-decoration:none;font-family:'Unbounded',sans-serif;display:inline-block;margin-top:8px;">Read Research ↗</a>
+          </div>
+
+          <div class="relief-protocol">
+            <div class="rp-header">
+              <span class="rp-icon">🔥</span>
+              <div>
+                <div class="rp-title">Thermotherapy — Heat Protocol</div>
+                <span class="rp-evidence">CLINICAL STANDARD</span>
+              </div>
+            </div>
+            <ul class="rp-steps">
+              <li>Apply 40°C (104°F) heat pad to lower abdomen</li>
+              <li>Maintain 20 minutes on, 10 minutes off cycles</li>
+              <li>Combine with 400mg magnesium glycinate for synergistic effect</li>
+              <li>Heat increases blood flow, relaxes uterine muscle spasm</li>
+            </ul>
+            <div class="rp-timing">⏱ Use at first sign of cramps. Most effective within first 2 days.</div>
+          </div>
+
+          <div class="relief-protocol">
+            <div class="rp-header">
+              <span class="rp-icon">💊</span>
+              <div>
+                <div class="rp-title">Magnesium Glycinate Protocol</div>
+                <span class="rp-evidence">RCT SUPPORTED</span>
+              </div>
+            </div>
+            <ul class="rp-steps">
+              <li>400mg magnesium glycinate daily in luteal phase (7 days pre-period)</li>
+              <li>Magnesium relaxes smooth muscle = less uterine cramping</li>
+              <li>Also reduces bloating, mood changes, and breast tenderness by up to 40%</li>
+              <li>Best absorbed with dinner; glycinate form is gentlest on digestion</li>
+            </ul>
+            <div class="rp-timing">⏱ Take nightly for 7 days before period. Takes 2–3 cycles to see full effect.</div>
+          </div>
+
+          <div class="relief-protocol">
+            <div class="rp-header">
+              <span class="rp-icon">🧘</span>
+              <div>
+                <div class="rp-title">Restorative Yoga Sequence</div>
+                <span class="rp-evidence">EVIDENCE-SUPPORTED</span>
+              </div>
+            </div>
+            <ul class="rp-steps">
+              <li>Child's Pose (Balasana) — hold 2 min, releases hip flexors</li>
+              <li>Supine Twist (Supta Matsyendrasana) — 1 min each side</li>
+              <li>Legs-Up-The-Wall (Viparita Karani) — 5–10 min, improves pelvic circulation</li>
+              <li>Cat-Cow breaths — 10 cycles, reduces lower back tension</li>
+            </ul>
+            <div class="rp-timing">⏱ Practice in the morning. Avoid inversions during heavy flow days.</div>
+            <a href="https://www.youtube.com/results?search_query=yoga+for+menstrual+cramps+restorative" target="_blank" style="font-size:.72rem;color:var(--terra);text-decoration:none;font-family:'Unbounded',sans-serif;display:inline-block;margin-top:8px;">Watch on YouTube ↗</a>
+          </div>
+        </div>
+
+        <div id="relief-back" style="display:none;">
+          <span class="label" style="margin-bottom:12px;">🔙 Menstrual Back Pain Relief Protocol</span>
+          <div class="relief-protocol">
+            <div class="rp-header"><span class="rp-icon">💆</span><div><div class="rp-title">Sacral Heat + Massage</div><span class="rp-evidence">EFFECTIVE</span></div></div>
+            <ul class="rp-steps">
+              <li>Apply heat pad to sacral area (lower back, not spine) 20 min</li>
+              <li>Circular massage with lavender + magnesium oil — 5 min</li>
+              <li>Tennis ball self-massage against wall for piriformis release</li>
+              <li>Avoid high heels — increases lumbar compression during period</li>
+            </ul>
+            <div class="rp-timing">⏱ Most effective applied at first sign of lower back aching.</div>
+          </div>
+          <div class="relief-protocol">
+            <div class="rp-header"><span class="rp-icon">🧘</span><div><div class="rp-title">Pelvic Floor Release</div><span class="rp-evidence">PHYSICAL THERAPY</span></div></div>
+            <ul class="rp-steps">
+              <li>Diaphragmatic breathing — 5 min belly breathing releases pelvic tension</li>
+              <li>Happy Baby pose — 2 min, opens sacrum and releases psoas</li>
+              <li>Seated forward fold — calms nervous system + stretches posterior chain</li>
+              <li>Avoid crunches/planks during period — increases intra-abdominal pressure</li>
+            </ul>
+            <div class="rp-timing">⏱ Practice twice daily during heavy days.</div>
+          </div>
+        </div>
+
+        <div id="relief-headache" style="display:none;">
+          <span class="label" style="margin-bottom:12px;">🧠 Hormonal Headache / Migraine Protocol</span>
+          <div class="relief-protocol">
+            <div class="rp-header"><span class="rp-icon">💧</span><div><div class="rp-title">Hydration + Electrolyte Reset</div><span class="rp-evidence">FIRST LINE</span></div></div>
+            <ul class="rp-steps">
+              <li>Drink 500ml water immediately — estrogen drop causes dehydration headaches</li>
+              <li>Add electrolytes (sodium + magnesium) — dissolve in water or use coconut water</li>
+              <li>Avoid caffeine if prone to hormonal migraines — withdrawal worsens them</li>
+              <li>Ice pack on back of neck + feet in warm water = vasodilation trick</li>
+            </ul>
+            <div class="rp-timing">⏱ Act within first 15 minutes of headache onset for best results.</div>
+          </div>
+          <div class="relief-protocol">
+            <div class="rp-header"><span class="rp-icon">🌿</span><div><div class="rp-title">Peppermint + Ginger Protocol</div><span class="rp-evidence">EVIDENCE-BASED</span></div></div>
+            <ul class="rp-steps">
+              <li>Peppermint oil (10%) to temples and forehead = topical analgesia</li>
+              <li>Ginger tea (500mg) reduces migraine intensity — similar to sumatriptan in one study</li>
+              <li>Dim lighting + cold room (68°F) — reduces photophobia</li>
+              <li>Acupressure point LI-4 (between thumb + index finger) — press firmly 2 min</li>
+            </ul>
+            <div class="rp-timing">⏱ Best for tension-type and hormonal headaches. For severe migraine consult a doctor.</div>
+          </div>
+        </div>
+
+        <div id="relief-bloating" style="display:none;">
+          <span class="label" style="margin-bottom:12px;">🫃 Period Bloating Relief Protocol</span>
+          <div class="relief-protocol">
+            <div class="rp-header"><span class="rp-icon">🌿</span><div><div class="rp-title">Anti-Bloat Herbal + Diet Protocol</div><span class="rp-evidence">EVIDENCE-BASED</span></div></div>
+            <ul class="rp-steps">
+              <li>Dandelion root tea — natural diuretic, reduces water retention safely</li>
+              <li>Reduce sodium 3 days before period — every 1g sodium retains 200ml fluid</li>
+              <li>Avoid carbonated drinks, beans, cruciferous veg during heavy days</li>
+              <li>Fennel seeds tea — relaxes intestinal smooth muscle, reduces gas</li>
+              <li>Potassium-rich foods (banana, avocado) counteract sodium retention</li>
+            </ul>
+            <div class="rp-timing">⏱ Start dietary changes 3 days before expected period onset.</div>
+          </div>
+        </div>
+
+        <div id="relief-breast" style="display:none;">
+          <span class="label" style="margin-bottom:12px;">💕 Cyclic Breast Pain Relief Protocol</span>
+          <div class="relief-protocol">
+            <div class="rp-header"><span class="rp-icon">🌿</span><div><div class="rp-title">Vitex + Evening Primrose Protocol</div><span class="rp-evidence">CLINICAL EVIDENCE</span></div></div>
+            <ul class="rp-steps">
+              <li>Vitex agnus-castus (Chasteberry) 40mg daily — reduces cyclic breast pain over 3 cycles</li>
+              <li>Evening primrose oil (3g/day) — GLA reduces prostaglandin-driven breast tenderness</li>
+              <li>Reduce caffeine — methylxanthines increase breast cyst formation</li>
+              <li>Supportive bra even during sleep on days of high tenderness</li>
+              <li>Cold compress (not ice) for 10 min — reduces inflammatory swelling</li>
+            </ul>
+            <div class="rp-timing">⏱ Vitex takes 3 cycles to show full effect. EPO can help within 1 cycle.</div>
+          </div>
+        </div>
+
+        <div id="relief-joint" style="display:none;">
+          <span class="label" style="margin-bottom:12px;">🦴 Hormonal Joint Pain Relief Protocol</span>
+          <div class="relief-protocol">
+            <div class="rp-header"><span class="rp-icon">🐟</span><div><div class="rp-title">Omega-3 Anti-Inflammatory Protocol</div><span class="rp-evidence">STRONG EVIDENCE</span></div></div>
+            <ul class="rp-steps">
+              <li>Omega-3 (EPA+DHA) 2–3g daily — reduces systemic inflammation tied to joint pain</li>
+              <li>Turmeric + black pepper (piperine enhances absorption 2000%) with food</li>
+              <li>Warm Epsom salt bath (20 min) — magnesium sulfate absorbs through skin</li>
+              <li>Avoid inflammatory foods during period: processed sugar, seed oils, alcohol</li>
+              <li>Gentle movement (swimming, walking) — synovial fluid needs motion</li>
+            </ul>
+            <div class="rp-timing">⏱ Omega-3 supplementation shows benefit after 4–6 weeks of consistent use.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MINDFUL EATING - DEEP -->
+<div id="eating" class="section">
+  <div class="ph"><div class="ph-eyebrow">Nutrition & Awareness</div><div class="ph-title">Mindful <span class="hl">Eating</span></div><div class="ph-sub">Hunger cues, emotional eating decoder, meal journaling, eating pace & craving science</div></div>
+  <div class="g2">
+    <!-- LEFT -->
+    <div>
+      <div class="card card-sky mb12">
+        <span class="label">Hunger Scale — Before Eating</span>
+        <div style="font-size:.82rem;color:var(--muted);margin-bottom:10px;">Rate your physical hunger before every meal. Aim to eat at 3–4 and stop at 6–7.</div>
+        <div class="hunger-scale" id="hunger-scale">
+          <div class="h-dot filled" onclick="setHunger(1)"></div>
+          <div class="h-dot filled" onclick="setHunger(2)"></div>
+          <div class="h-dot filled" onclick="setHunger(3)"></div>
+          <div class="h-dot filled" onclick="setHunger(4)"></div>
+          <div class="h-dot filled" onclick="setHunger(5)"></div>
+          <div class="h-dot" onclick="setHunger(6)"></div>
+          <div class="h-dot" onclick="setHunger(7)"></div>
+          <div class="h-dot" onclick="setHunger(8)"></div>
+          <div class="h-dot" onclick="setHunger(9)"></div>
+          <div class="h-dot" onclick="setHunger(10)"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:.68rem;color:var(--muted);margin-top:4px;font-style:italic;"><span>1–Ravenous</span><span>5–Neutral</span><span>10–Stuffed</span></div>
+        <div id="hunger-txt" style="margin-top:10px;font-size:.85rem;color:var(--sky);font-style:italic;padding:10px;background:rgba(126,200,212,.08);border-radius:8px;">Moderate hunger — ideal time to eat mindfully</div>
+      </div>
+
+      <!-- Emotion Check Before Eating -->
+      <div class="card mb12">
+        <span class="label">Emotion Check — Why Am I Reaching For Food?</span>
+        <div style="font-size:.82rem;color:var(--muted);margin-bottom:10px;">Identify what you're feeling before eating. Emotional eating = responding to emotions, not hunger.</div>
+        <div class="emotion-grid">
+          <div class="emo-btn" onclick="selEmotion(this,'Stressed')"><span class="emo-icon">😤</span>Stressed</div>
+          <div class="emo-btn" onclick="selEmotion(this,'Bored')"><span class="emo-icon">😐</span>Bored</div>
+          <div class="emo-btn" onclick="selEmotion(this,'Anxious')"><span class="emo-icon">😰</span>Anxious</div>
+          <div class="emo-btn" onclick="selEmotion(this,'Sad')"><span class="emo-icon">😢</span>Sad</div>
+          <div class="emo-btn" onclick="selEmotion(this,'Celebrating')"><span class="emo-icon">🎉</span>Celebrat.</div>
+          <div class="emo-btn" onclick="selEmotion(this,'Tired')"><span class="emo-icon">😴</span>Tired</div>
+          <div class="emo-btn" onclick="selEmotion(this,'Lonely')"><span class="emo-icon">🥺</span>Lonely</div>
+          <div class="emo-btn" onclick="selEmotion(this,'Genuinely Hungry')"><span class="emo-icon">🍽️</span>Hungry</div>
+        </div>
+        <div id="emo-response" style="margin-top:10px;font-size:.83rem;line-height:1.7;color:var(--muted);padding:10px;background:var(--ivory);border-radius:8px;display:none;"></div>
+      </div>
+
+      <!-- Eating Pace Timer -->
+      <div class="card mb12">
+        <span class="label">Mindful Eating Timer</span>
+        <div style="font-size:.82rem;color:var(--muted);margin-bottom:12px;">Aim for 20 minutes per meal. Satiety signals take 20 min to reach the brain. Eating faster = 30% more calories consumed.</div>
+        <div class="pace-timer">
+          <div class="pace-display" id="pace-display">20:00</div>
+          <div class="pace-lbl">MEAL TIMER</div>
+          <div style="margin-top:14px;display:flex;justify-content:center;gap:6px;">
+            <button class="pace-btn" style="background:var(--sage);color:#fff;" onclick="startPaceTimer()">▶ Start</button>
+            <button class="pace-btn" style="background:var(--sand);color:var(--ink);" onclick="pausePaceTimer()">⏸ Pause</button>
+            <button class="pace-btn" style="background:var(--ivory);color:var(--muted);border:2px solid var(--sand);" onclick="resetPaceTimer()">↺ Reset</button>
+          </div>
+          <div id="pace-message" style="font-size:.78rem;color:var(--muted);font-style:italic;margin-top:10px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div>
+      <!-- Ideal Plate -->
+      <div class="card mb12">
+        <span class="label">Ideal Plate Builder</span>
+        <div class="meal-plate">
+          <div class="plate-bg">
+            <div style="position:absolute;top:0;left:0;width:50%;height:100%;background:rgba(196,232,74,.25);border-right:2px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;flex-direction:column;"><div style="font-size:1.2rem;">🥗</div><div style="font-size:.62rem;font-family:'Unbounded',sans-serif;color:var(--sage);letter-spacing:1px;text-align:center;padding:4px;">VEGE<br>50%</div></div>
+            <div style="position:absolute;top:0;right:0;width:50%;height:50%;background:rgba(196,103,58,.18);border-bottom:2px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;flex-direction:column;"><div style="font-size:1.2rem;">🍗</div><div style="font-size:.62rem;font-family:'Unbounded',sans-serif;color:var(--terra);letter-spacing:1px;text-align:center;padding:4px;">PROTEIN<br>25%</div></div>
+            <div style="position:absolute;bottom:0;right:0;width:50%;height:50%;background:rgba(126,200,212,.18);display:flex;align-items:center;justify-content:center;flex-direction:column;"><div style="font-size:1.2rem;">🌾</div><div style="font-size:.62rem;font-family:'Unbounded',sans-serif;color:var(--sky);letter-spacing:1px;text-align:center;padding:4px;">COMPLEX<br>CARBS 25%</div></div>
+          </div>
+        </div>
+        <div style="font-size:.82rem;color:var(--muted);text-align:center;line-height:1.7;margin-top:8px;">Fill your plate in this order: <strong style="color:var(--sage);">vegetables first</strong>, then protein, then complex carbs. This sequence naturally reduces overeating.</div>
+      </div>
+
+      <!-- Craving Decoder -->
+      <div class="card mb12">
+        <span class="label">Craving Decoder — What Your Body Really Needs</span>
+        <div class="craving-card">
+          <div class="craving-header"><span class="craving-emoji">🍫</span><div class="craving-name">Craving Chocolate / Sugar</div></div>
+          <div class="craving-meaning">Often signals <strong>magnesium deficiency</strong>, blood sugar crash, or emotional comfort-seeking. Also very common in the luteal phase (days 15–28) when progesterone peaks.</div>
+          <div class="craving-fix">✅ Fix: Dark chocolate 85% (magnesium), a handful of dates + peanut butter, or a walk to raise dopamine naturally.</div>
+        </div>
+        <div class="craving-card">
+          <div class="craving-header"><span class="craving-emoji">🧀</span><div class="craving-name">Craving Cheese / Dairy</div></div>
+          <div class="craving-meaning">Often signals <strong>calcium or fatty acid deficiency</strong>. May also indicate low tryptophan (which cheese contains, converting to serotonin).</div>
+          <div class="craving-fix">✅ Fix: Greek yogurt, sesame seeds (tahini), almonds, or sardines for calcium + healthy fats.</div>
+        </div>
+        <div class="craving-card">
+          <div class="craving-header"><span class="craving-emoji">🍟</span><div class="craving-name">Craving Salty / Crunchy</div></div>
+          <div class="craving-meaning">Signals <strong>stress (cortisol raises salt cravings)</strong>, adrenal fatigue, or sodium imbalance. Also boredom — the crunch provides oral stimulation.</div>
+          <div class="craving-fix">✅ Fix: Roasted chickpeas, edamame with sea salt, celery with hummus, or rice cakes with avocado.</div>
+        </div>
+        <div class="craving-card">
+          <div class="craving-header"><span class="craving-emoji">🍞</span><div class="craving-name">Craving Bread / Carbs</div></div>
+          <div class="craving-meaning">Signals <strong>serotonin drop, low energy, or hormonal shift</strong>. Estrogen influences serotonin; carb cravings increase when estrogen drops (late luteal + period).</div>
+          <div class="craving-fix">✅ Fix: Sweet potato, oats, sourdough bread (lower glycemic), banana + nut butter.</div>
+        </div>
+      </div>
+
+      <!-- Meal Journal Quick Log -->
+      <div class="card">
+        <span class="label">Meal Journal — Quick Log</span>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;">
+          <div><label>Meal / Food</label><input type="text" id="mj-food" placeholder="e.g. Oatmeal + berries"></div>
+          <div><label>Hunger Before (1–10)</label><input type="number" id="mj-hunger" min="1" max="10" placeholder="5"></div>
+          <div><label>Mood After</label>
+            <select id="mj-mood">
+              <option>😊 Energized</option><option>😌 Calm & Satisfied</option><option>😐 Neutral</option>
+              <option>😫 Bloated / Heavy</option><option>😴 Sleepy / Sluggish</option><option>😟 Guilty</option><option>😤 Anxious</option>
+            </select>
+          </div>
+          <div><label>Time</label><input type="text" id="mj-time" placeholder="e.g. 8:30 AM"></div>
+        </div>
+        <textarea id="mj-notes" style="min-height:45px;margin-bottom:10px;" placeholder="Any notes — eating speed, distractions, emotions..."></textarea>
+        <button class="btn btn-sky" onclick="logMealJournal()" style="width:100%;color:#fff;">Log Meal Entry ✦</button>
+        <div id="mj-log" style="margin-top:12px;max-height:200px;overflow-y:auto;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mindful Eating Principles -->
+  <div class="card mt12">
+    <span class="label">7 Science-Backed Mindful Eating Principles</span>
+    <div class="g2" style="gap:10px;margin-top:8px;">
+      <div class="me-tip">🌿 <strong>Eat without screens</strong> — distracted eating increases intake by 25% and reduces meal satisfaction by 40% (Br J Nutr, 2013)</div>
+      <div class="me-tip">🍽️ <strong>Chew 20–30 times per bite</strong> — thorough chewing reduces calorie intake and improves nutrient extraction</div>
+      <div class="me-tip">⏱️ <strong>20-minute meals minimum</strong> — leptin (satiety hormone) takes 20 min to signal fullness to the brain</div>
+      <div class="me-tip">💜 <strong>HALT before eating</strong> — Ask: Am I Hungry, Angry, Lonely, or Tired? Pause 5 min if not truly hungry</div>
+      <div class="me-tip">🛑 <strong>Hara Hachi Bu — 80% full rule</strong> — Japanese centenarians stop at 80% full. Prevents 20% calorie overconsumption</div>
+      <div class="me-tip">🌸 <strong>Cycle-aware eating</strong> — Eat lighter + raw in ovulatory phase; warm, grounding foods in luteal phase; iron-rich in menstrual phase</div>
+    </div>
+  </div>
+</div>
+
+<!-- AI PLANNER -->
+<div id="planner" class="section">
+  <div class="ph"><div class="ph-eyebrow">AI-Powered Planning</div><div class="ph-title">Your Personal <span class="hl">Planner</span></div><div class="ph-sub">Generate custom plans for nutrition, workouts, detox, sleep routines & more</div></div>
+  <div class="g2">
+    <div class="card card-lime">
+      <span class="label">Choose Plan Type</span>
+      <div class="ai-tab-row" id="ai-tab-row">
+        <button class="ai-tab active" onclick="selTab(this,'7-Day Nutrition Plan')">Nutrition</button>
+        <button class="ai-tab" onclick="selTab(this,'Weekly Workout Plan')">Workout</button>
+        <button class="ai-tab" onclick="selTab(this,'7-Day Detox Plan')">Detox</button>
+        <button class="ai-tab" onclick="selTab(this,'Evening Wind-Down Routine')">Sleep Routine</button>
+        <button class="ai-tab" onclick="selTab(this,'Gut Health Reset Plan')">Gut Reset</button>
+        <button class="ai-tab" onclick="selTab(this,'Hormone Balance Protocol')">Hormone</button>
+        <button class="ai-tab" onclick="selTab(this,'Cycle-Synced Meal Plan')">Cycle Sync</button>
+        <button class="ai-tab" onclick="selTab(this,'Fertility Nutrition Plan')">Fertility</button>
+      </div>
+      <div class="ai-form">
+        <div><label>Age Range</label><select id="p-age"><option>18-25</option><option>26-35</option><option selected>36-45</option><option>46-55</option><option>55+</option></select></div>
+        <div><label>Health Priority</label><select id="p-priority"><option>Energy & Vitality</option><option>Weight Management</option><option>Hormonal Balance</option><option>Gut Health</option><option>Skin Glow</option><option>Stress Reduction</option><option>Fertility Support</option><option>Pain Management</option></select></div>
+        <div><label>Activity Level</label><select id="p-activity"><option>Sedentary</option><option>Light</option><option selected>Moderate</option><option>Very Active</option></select></div>
+        <div><label>Dietary Restriction</label><select id="p-restrict"><option>None</option><option>Vegetarian</option><option>Vegan</option><option>Gluten-Free</option><option>Dairy-Free</option><option>Paleo</option></select></div>
+        <div><label>Cycle Phase (if known)</label><select id="p-phase"><option>Unsure / General</option><option>Menstrual (Days 1-5)</option><option>Follicular (Days 6-13)</option><option>Ovulatory (Days 14-16)</option><option>Luteal (Days 17-28)</option></select></div>
+        <div><label>Current Concern</label><select id="p-concern"><option>None specific</option><option>Severe cramps</option><option>Low energy / fatigue</option><option>Bloating & digestion</option><option>PMS / mood swings</option><option>Poor sleep</option><option>Skin issues</option><option>Trying to conceive</option></select></div>
+      </div>
+      <textarea id="p-extra" style="margin-bottom:12px;min-height:60px;" placeholder="Any specific concerns, health conditions, medications, or goals to mention?"></textarea>
+      <button class="btn btn-lime" onclick="generatePlan()" id="plan-btn" style="width:100%">✦ Generate My Personalized Plan</button>
+    </div>
+    <div class="card">
+      <span class="label">Your Generated Plan</span>
+      <div id="plan-output" class="ai-output">
+        <div style="text-align:center;padding:40px 20px;color:var(--muted);font-style:italic;">
+          <div style="font-size:2.5rem;margin-bottom:14px;">✦</div>
+          <div style="font-family:'Unbounded',sans-serif;font-size:.75rem;letter-spacing:2px;line-height:2;">Select your plan type and preferences,<br>then click generate for a fully personalized wellness plan.</div>
+        </div>
+      </div>
+      <div class="flex gap8 mt12">
+        <a href="https://www.google.com/search?q=women+wellness+weekly+plan+template" target="_blank" class="btn btn-outline" style="text-decoration:none;font-size:.6rem;padding:9px 14px;">Browse Plans ↗</a>
+        <a href="https://www.youtube.com/results?search_query=women+weekly+healthy+routine" target="_blank" class="btn btn-outline" style="text-decoration:none;font-size:.6rem;padding:9px 14px;">YouTube ▶</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LIVE COACH - ENHANCED -->
+<div id="chat" class="section">
+  <div class="ph"><div class="ph-eyebrow">AI Wellness Coach</div><div class="ph-title">Live <span class="hl">Coach</span></div><div class="ph-sub">Ask anything about women's holistic health — evidence-based, empathetic, always here</div></div>
+  <div class="qc-row">
+    <button class="qc" onclick="qChat('How do I naturally boost fertility and egg quality?')">🌱 Fertility Boost</button>
+    <button class="qc" onclick="qChat('What are the best foods to eat during each menstrual phase?')">🌸 Phase Nutrition</button>
+    <button class="qc" onclick="qChat('How do I stop energy crashes in the afternoon?')">⚡ Energy Crashes</button>
+    <button class="qc" onclick="qChat('What is the best way to track ovulation naturally at home?')">🌡️ Track Ovulation</button>
+    <button class="qc" onclick="qChat('How can I improve my gut health and why does it affect hormones?')">🦠 Gut & Hormones</button>
+    <button class="qc" onclick="qChat('What are the most effective natural remedies for period pain?')">💆 Period Pain</button>
+    <button class="qc" onclick="qChat('How do I break the cycle of emotional eating?')">🥣 Emotional Eating</button>
+    <button class="qc" onclick="qChat('What daily habits most improve long-term women's health?')">🌿 Daily Habits</button>
+    <button class="qc" onclick="qChat('How does my hydration level affect my skin and hormones?')">💧 Hydration & Skin</button>
+    <button class="qc" onclick="qChat('Create a morning routine for energy and hormonal health')">☀️ Morning Routine</button>
+    <button class="qc" onclick="qChat('How do I use the symptothermal method for natural birth control or conception?')">🌡️ Symptothermal Method</button>
+    <button class="qc" onclick="qChat('What supplements should women take in their 30s?')">💊 Women's Supplements</button>
+  </div>
+  <div class="chat-box" id="viva-chat">
+    <div class="msg-b bot">
+      <strong>Hey! I'm your VIVA Wellness Coach 🌿</strong><br><br>
+      I specialize in holistic women's wellness — fertility awareness, natural energy, hydration science, pain relief, mindful eating, cycle syncing, gut health, and everything in between.<br><br>
+      I blend ancient wisdom with modern science to give you practical, personalized advice. What would you like to explore today? ✦
+    </div>
+  </div>
+  <div class="chat-row">
+    <input class="chat-in" id="viva-input" placeholder="Ask me about fertility, pain relief, mindful eating, hormones..." onkeypress="if(event.key==='Enter')vivaChat()">
+    <button class="chat-send-btn" id="viva-send" onclick="vivaChat()">Send ✦</button>
+  </div>
+  <div style="text-align:center;font-size:.65rem;color:var(--muted);letter-spacing:2px;font-family:'Unbounded',sans-serif;margin-top:10px;">POWERED BY CLAUDE AI · HOLISTIC · EVIDENCE-BASED · NOT MEDICAL ADVICE</div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script>
+// ── Custom Cursor ─────────────────────────────────────────
+const cur = document.getElementById('cur');
+const curRing = document.getElementById('curRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{ mx=e.clientX; my=e.clientY; cur.style.left=mx+'px'; cur.style.top=my+'px'; });
+setInterval(()=>{ rx+=(mx-rx)*.12; ry+=(my-ry)*.12; curRing.style.left=rx+'px'; curRing.style.top=ry+'px'; },16);
+
+// ── Navigate ──────────────────────────────────────────────
+function go(id) {
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const ids=['home','fertility','energy','hydration','goals','relief','eating','planner','chat'];
+  const i=ids.indexOf(id);
+  if(i>=0) document.querySelectorAll('.nav-tab')[i]?.classList.add('active');
+  window.scrollTo(0,0);
+}
+
+// ── Toast ─────────────────────────────────────────────────
+function toast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+// ── Date & Intention ──────────────────────────────────────
+const now=new Date();
+document.getElementById('hero-date-txt').textContent=now.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
+const intentions=[
+  '"Today I nourish my body with kindness, move with joy, and rest without guilt. My health is my greatest wealth." 🌿',
+  '"I listen to my body\'s wisdom. I eat with awareness, sleep with intention, and treat myself with the grace I deserve." ✦',
+  '"Every healthy choice today is a love letter to my future self. I am worthy of vibrant, radiant health." 🌸',
+  '"I release stress with each breath. I am grounded, energized, and fully present in this beautiful body." 🌱',
+  '"I honour my cycles, my emotions, and my needs. My feminine energy is a superpower, not a weakness." ⚡',
+];
+let intIdx = now.getDate() % intentions.length;
+document.getElementById('intention-txt').textContent = intentions[intIdx];
+function newIntention(){ intIdx=(intIdx+1)%intentions.length; document.getElementById('intention-txt').textContent=intentions[intIdx]; }
+
+// ── Water Drops ───────────────────────────────────────────
+let waterMl = 1600;
+function renderDrops(){
+  const w=document.getElementById('drops-wrap');
+  w.innerHTML='';
+  const filled=Math.round(waterMl/250);
+  for(let i=0;i<10;i++){
+    const d=document.createElement('div');
+    d.className='drop'+(i<filled?' filled':'');
+    d.textContent=i<filled?'💧':'';
+    d.onclick=()=>{ waterMl=i<filled?i*250:(i+1)*250; renderDrops(); };
+    w.appendChild(d);
+  }
+  document.getElementById('hy-ml').textContent=waterMl+'ml';
+  document.getElementById('hy-pct').textContent=Math.round(waterMl/2500*100)+'%';
+  document.getElementById('d-hyd').textContent=(waterMl/1000).toFixed(1)+'L';
+}
+renderDrops();
+function addHydFood(el,ml){ waterMl=Math.min(waterMl+ml,2500); renderDrops(); toast(`+${ml}ml from food ✦`); }
+
+// ── Energy Toggle ─────────────────────────────────────────
+function toggleE(el){ el.classList.toggle('on'); updateEnergyScore(); }
+function updateEnergyScore(){
+  const on=document.querySelectorAll('.e-cell.on').length;
+  document.getElementById('d-nrg').textContent=Math.round(on/6*100)+'%';
+}
+function toggleTag(el){ el.classList.toggle('sel'); }
+
+// ── Goals ─────────────────────────────────────────────────
+function toggleGoal(el){
+  const c=el.querySelector('.g-circle');
+  const done=!el.classList.contains('done');
+  el.classList.toggle('done'); c.classList.toggle('done');
+  c.textContent=done?'✓':'';
+  updateGoalPct();
+}
+function updateGoalPct(){
+  const total=document.querySelectorAll('#goal-list .goal-item').length;
+  const done=document.querySelectorAll('#goal-list .goal-item.done').length;
+  document.getElementById('goal-pct').textContent=Math.round(done/total*100)+'%';
+  document.getElementById('d-goal').textContent=done+'/'+total;
+}
+function addGoal(){
+  const txt=document.getElementById('new-goal-txt').value.trim();
+  const cat=document.getElementById('new-goal-cat').value;
+  if(!txt){toast('Enter a goal first');return;}
+  const catLabels={'cat-n':'Nutrition','cat-f':'Fitness','cat-m':'Mental','cat-b':'Body'};
+  const div=document.createElement('div');
+  div.className='goal-item'; div.onclick=function(){toggleGoal(this);};
+  div.innerHTML=`<div class="g-circle"></div><div class="g-text"><div class="g-title">${txt}</div><div class="g-sub">Just added</div></div><span class="g-cat ${cat}">${catLabels[cat]||cat}</span>`;
+  document.getElementById('goal-list').appendChild(div);
+  document.getElementById('new-goal-txt').value='';
+  updateGoalPct(); toast('✦ Goal added!');
+}
+
+// ── FERTILITY - Deep ──────────────────────────────────────
+const phaseDetails = {
+  menstrual: {
+    title:'🩸 Menstrual Phase',
+    info:'Your body sheds the uterine lining. Estrogen and progesterone are at their lowest. Focus on rest, warmth, and iron-rich foods. This is a natural time for reflection and inward energy. Honor this phase — do not push through it.',
+    nutrition:'Iron (red meat, lentils, spinach), Vitamin C to aid iron absorption, warming foods (soups, stews), reduce inflammatory foods. Avoid cold/raw foods which can worsen cramps in TCM.',
+    exercise:'Gentle walks, restorative yoga, stretching only. No high intensity. Your body is working hard.',
+    mood:'Low energy is normal and biologically expected. Be compassionate with yourself.'
+  },
+  follicular: {
+    title:'🌱 Follicular Phase',
+    info:'Follicles in your ovary mature. Estrogen begins rising — energy, mood, and creativity increase. Your brain is sharper, social and cognitive performance peak. This is your "spring" — a great time to start new projects.',
+    nutrition:'Light, fresh foods. Fermented foods (yogurt, kimchi) support estrogen metabolism. Zinc (pumpkin seeds) for follicle development. Avoid excess alcohol.',
+    exercise:'Build up intensity — cardio, strength training, HIIT. You have the most strength and stamina now.',
+    mood:'Optimistic, sociable, energetic. Great time for networking, new habits, and creative work.'
+  },
+  ovulatory: {
+    title:'🌟 Ovulatory Phase',
+    info:'LH surges, triggering ovulation. An egg is released from the dominant follicle and travels to the fallopian tube. The fertile window spans 5 days before ovulation plus ovulation day. Estrogen peaks — you feel your best.',
+    nutrition:'Zinc (oysters, pumpkin seeds) for egg quality. Vitamin E (almonds, sunflower seeds) for reproductive health. Light, raw salads are well-tolerated now.',
+    exercise:'Peak performance window. Great for personal records, outdoor adventures, team sports.',
+    mood:'Charismatic, energized, verbal. Best time for presentations, dates, social events, leadership.'
+  },
+  luteal: {
+    title:'🌙 Luteal Phase',
+    info:'Progesterone rises after ovulation. If no fertilization occurs, both hormones drop near the end causing PMS. Your body temperature rises slightly. You may feel more introverted, tired, or emotional — this is hormonally driven, not a personal failing.',
+    nutrition:'Magnesium (dark chocolate, leafy greens) reduces PMS and cramps. Complex carbs support serotonin. Reduce caffeine, salt, alcohol. Increase calcium-rich foods.',
+    exercise:'Moderate activity. Pilates, barre, yoga, lighter strength work. Rest as needed without guilt.',
+    mood:'Detail-oriented, creative, introverted. Great for deep work, editing, organizing. Prioritize sleep and self-care in late luteal.'
+  }
+};
+
+function showPhaseDetail(phase){
+  const box=document.getElementById('phase-detail-box');
+  const d=phaseDetails[phase];
+  box.style.display='block';
+  box.innerHTML=`<strong style="color:var(--ink);font-size:.9rem;">${d.title}</strong><br><br>
+    ${d.info}<br><br>
+    <strong style="color:var(--sage);">🥗 Nutrition:</strong> ${d.nutrition}<br>
+    <strong style="color:var(--terra);">💪 Exercise:</strong> ${d.exercise}<br>
+    <strong style="color:var(--sky);">🧠 Mood:</strong> ${d.mood}`;
+}
+
+// BBT Chart
+const bbtData=[97.4,97.5,97.3,97.6,97.5,97.8,97.7,97.9,98.0,98.1,98.2,98.4,98.3,98.6,98.5,98.4,98.6,98.7,98.5,98.4,98.3,98.2,97.9,97.8,97.6,97.5,97.4,97.3];
+function renderBBT(){
+  const c=document.getElementById('bbt-chart');
+  c.innerHTML='';
+  const min=97.0, max=99.0, range=max-min;
+  bbtData.forEach((t,i)=>{
+    const bar=document.createElement('div');
+    bar.className='bbt-bar';
+    const pct=Math.min(100,Math.max(5,((t-min)/range)*100));
+    bar.style.height=pct+'%';
+    bar.style.background=t>=98.3?'var(--terra)':'var(--sky)';
+    bar.title=`Day ${i+1}: ${t}°F`;
+    bar.onclick=()=>toast(`Day ${i+1}: ${t}°F ${t>=98.3?'↑ Post-ovulation':'Pre-ovulation'}`);
+    c.appendChild(bar);
+  });
+}
+renderBBT();
+
+function addBBT(){
+  const val=parseFloat(document.getElementById('bbt-input').value);
+  if(!val||val<97||val>99.5){toast('Enter a valid temperature (97–99.5°F)');return;}
+  bbtData.push(val);
+  if(bbtData.length>28)bbtData.shift();
+  renderBBT();
+  document.getElementById('bbt-confirm').textContent=`✓ ${val}°F logged`;
+  document.getElementById('bbt-input').value='';
+  setTimeout(()=>document.getElementById('bbt-confirm').textContent='',3000);
+}
+
+// OPK
+const opkLevels=['','low','low','low','low','low','low','high','peak','high','low','low','low'];
+function renderOPK(){
+  const row=document.getElementById('opk-row');
+  row.innerHTML='';
+  for(let i=8;i<=20;i++){
+    const lvl=opkLevels[i-8]||'';
+    const d=document.createElement('div');
+    d.className=`opk-day ${lvl}`;
+    d.textContent=i;
+    d.title=`Day ${i}: ${lvl||'not logged'}`;
+    d.onclick=()=>{
+      const levels=['','low','high','peak'];
+      const idx=levels.indexOf(opkLevels[i-8]);
+      opkLevels[i-8]=levels[(idx+1)%4];
+      renderOPK();
+    };
+    row.appendChild(d);
+  }
+}
+renderOPK();
+
+function selCM(el,desc){
+  document.querySelectorAll('.cm-type').forEach(c=>c.classList.remove('sel'));
+  el.classList.add('sel');
+  document.getElementById('cm-desc').textContent=desc;
+}
+
+function recalcFertility(){
+  const len=parseInt(document.getElementById('f-len').value)||28;
+  const luteal=parseInt(document.getElementById('f-luteal').value)||14;
+  const ovDay=len-luteal;
+  document.getElementById('fert-day-num').textContent=ovDay;
+  document.getElementById('fert-day-of').textContent='of '+len;
+  const circumference=427;
+  const offset=circumference-(circumference*(ovDay/len));
+  document.getElementById('fert-arc').setAttribute('stroke-dashoffset',offset);
+  // Update phase timeline
+  const period=parseInt(document.getElementById('f-period').value)||5;
+  document.getElementById('pt-men').textContent=`Days 1–${period}`;
+  document.getElementById('pt-fol').textContent=`Days ${period+1}–${ovDay-1}`;
+  document.getElementById('pt-ov').textContent=`Days ${ovDay-1}–${ovDay+1}`;
+  document.getElementById('pt-lut').textContent=`Days ${ovDay+2}–${len}`;
+}
+recalcFertility();
+
+function saveFertSymptoms(){
+  const sel=document.querySelectorAll('.symptom-btn.sel').length;
+  toast(`✦ ${sel} symptoms logged for today`);
+}
+
+// ── PAIN RELIEF - Deep ────────────────────────────────────
+let selectedPainType='cramps';
+let selectedPainLevel=4;
+
+function selPainType(el,type){
+  document.querySelectorAll('.pain-type-btn').forEach(b=>b.classList.remove('sel-pain-type'));
+  el.classList.add('sel-pain-type');
+  selectedPainType=type;
+  // Show correct protocol
+  const protocols=['cramps','back','headache','bloating','breast','joint'];
+  protocols.forEach(p=>{
+    const el2=document.getElementById('relief-'+p);
+    if(el2)el2.style.display=p===type?'block':'none';
+  });
+}
+
+function selPain(el,level){
+  document.querySelectorAll('.pain-dot').forEach(d=>d.classList.remove('sel'));
+  el.classList.add('sel');
+  selectedPainLevel=level;
+  const msgs=['','1 — Barely noticeable','2 — Very mild','3 — Mild discomfort','4 — Noticeable pain','5 — Moderate, distracting','6 — Significant — limits activity','7 — Strong — hard to concentrate','8 — Intense — very limiting','9 — Severe — barely functional','10 — Extreme — please rest & seek care'];
+  document.getElementById('pain-level-display').textContent=msgs[level];
+}
+
+function savePainLog(){
+  const typeNames={cramps:'🩸 Cramps',back:'🔙 Back Pain',headache:'🧠 Headache',bloating:'🫃 Bloating',breast:'💕 Breast Pain',joint:'🦴 Joint Pain'};
+  const symptoms=Array.from(document.querySelectorAll('#relief .tag-chip.sel')).map(t=>t.textContent).join(', ');
+  const now=new Date();
+  const timeStr=now.getHours()+':'+String(now.getMinutes()).padStart(2,'0');
+  const list=document.getElementById('pain-log-list');
+  const entry=document.createElement('div');
+  entry.className='pain-log-entry';
+  entry.innerHTML=`<span class="ple-time">Today ${timeStr}</span><span class="ple-type">${typeNames[selectedPainType]||selectedPainType}</span><span style="font-size:.8rem;color:var(--muted);">${symptoms?'+ '+symptoms:''}</span><span class="ple-level">${selectedPainLevel}/10</span>`;
+  list.insertBefore(entry,list.firstChild);
+  toast('✦ Pain log saved');
+}
+
+// ── MINDFUL EATING - Deep ─────────────────────────────────
+function setHunger(level){
+  document.querySelectorAll('.h-dot').forEach((d,i)=>d.classList.toggle('filled',i<level));
+  const msgs=['','1 — Ravenous — eat soon, choose wisely','2 — Very hungry — don\'t skip, eat balanced','3 — Hungry — ideal time to start eating','4 — Slightly hungry — good time for a meal','5 — Neutral — eat only if mealtime','6 — Lightly satisfied — starting to feel full','7 — Satisfied — ideal stopping point','8 — Comfortably full — stop here','9 — Very full — overate slightly','10 — Stuffed — pause next meal'];
+  document.getElementById('hunger-txt').textContent=msgs[level];
+}
+
+const emoResponses={
+  'Stressed':'😤 Stress triggers cortisol, which raises cravings for sugar and fat. Try: 3 deep breaths, a 5-min walk, or calling a friend. If still hungry after 10 min, you can eat mindfully.',
+  'Bored':'😐 Boredom eating is very common. Ask: "What would I enjoy doing right now besides eating?" Often we\'re looking for stimulation, not food. Try: a quick task, stretching, or music.',
+  'Anxious':'😰 Anxiety activates the stress response — comfort foods feel calming because they spike dopamine. Try: grounding (name 5 things you see), magnesium tea, or journaling.',
+  'Sad':'😢 Emotional eating when sad is seeking serotonin (carbs boost it). Honor your feelings first. Try: a 10-min walk (raises serotonin), journaling, or calling someone. Then decide if you\'re truly hungry.',
+  'Celebrating':'🎉 Social and celebratory eating is healthy and joyful! Enjoy fully, eat slowly, stay present. Savor each bite — this is what food is also for.',
+  'Tired':'😴 Fatigue often mimics hunger. Your body may want energy, not food. Try: a 10-min rest, 300ml water (dehydration = fatigue), or a 5-min walk first.',
+  'Lonely':'🥺 Loneliness often leads to seeking comfort from food. It\'s valid. Try: reaching out to someone, a warm drink, or a comforting activity. Then check real hunger.',
+  'Genuinely Hungry':'🍽️ Great! You\'re in the ideal zone to eat. Use the hunger scale (aim for 3–4), build your plate mindfully, and eat slowly. Enjoy your meal!'
+};
+
+function selEmotion(el, emotion){
+  document.querySelectorAll('.emo-btn').forEach(b=>b.classList.remove('sel'));
+  el.classList.add('sel');
+  const box=document.getElementById('emo-response');
+  box.style.display='block';
+  box.innerHTML=`<strong style="color:var(--sky);">${emotion}:</strong><br>${emoResponses[emotion]||'Pause and check in with what you truly need right now.'}`;
+}
+
+// Eating Pace Timer
+let paceInterval=null, paceSeconds=1200, paceRunning=false;
+function updatePaceDisplay(){
+  const m=Math.floor(paceSeconds/60), s=paceSeconds%60;
+  document.getElementById('pace-display').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+  const progress=1-paceSeconds/1200;
+  const messages=['Just started — take a deep breath before your first bite 🌿','Great! Put your fork down between bites','You\'re doing well — notice the flavors and textures','Halfway! Check your hunger level — are you still hungry?','Slowing down — your body is processing fullness signals','Almost done — check: are you comfortably satisfied?','⏰ 20 minutes complete! Rate your fullness now (aim for 6–7/10)'];
+  const idx=Math.min(Math.floor(progress*7),6);
+  document.getElementById('pace-message').textContent=messages[idx];
+}
+function startPaceTimer(){
+  if(paceRunning)return;
+  paceRunning=true;
+  paceInterval=setInterval(()=>{ if(paceSeconds>0){paceSeconds--;updatePaceDisplay();}else{clearInterval(paceInterval);paceRunning=false;toast('🎉 Mindful meal complete!');} },1000);
+}
+function pausePaceTimer(){ clearInterval(paceInterval); paceRunning=false; }
+function resetPaceTimer(){ pausePaceTimer(); paceSeconds=1200; updatePaceDisplay(); document.getElementById('pace-message').textContent=''; }
+
+// Meal Journal
+function logMealJournal(){
+  const food=document.getElementById('mj-food').value.trim();
+  const hunger=document.getElementById('mj-hunger').value;
+  const mood=document.getElementById('mj-mood').value;
+  const time=document.getElementById('mj-time').value||new Date().getHours()+':'+String(new Date().getMinutes()).padStart(2,'0');
+  const notes=document.getElementById('mj-notes').value.trim();
+  if(!food){toast('Enter what you ate first');return;}
+  const log=document.getElementById('mj-log');
+  const entry=document.createElement('div');
+  entry.className='meal-journal-entry';
+  entry.innerHTML=`<div class="mje-header"><span class="mje-time">${time}</span><span class="mje-hunger">Hunger before: ${hunger||'?'}/10</span></div><div class="mje-food">${food}</div><div class="mje-mood">${mood}${notes?' · '+notes:''}</div>`;
+  log.insertBefore(entry,log.firstChild);
+  document.getElementById('mj-food').value='';
+  document.getElementById('mj-hunger').value='';
+  document.getElementById('mj-notes').value='';
+  toast('✦ Meal logged');
+}
+
+// ── AI PLANNER ────────────────────────────────────────────
+let currentPlanType='7-Day Nutrition Plan';
+function selTab(el,type){
+  document.querySelectorAll('.ai-tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active'); currentPlanType=type;
+}
+
+async function generatePlan(){
+  const age=document.getElementById('p-age').value;
+  const priority=document.getElementById('p-priority').value;
+  const activity=document.getElementById('p-activity').value;
+  const restrict=document.getElementById('p-restrict').value;
+  const phase=document.getElementById('p-phase').value;
+  const concern=document.getElementById('p-concern').value;
+  const extra=document.getElementById('p-extra').value;
+  const btn=document.getElementById('plan-btn');
+  const out=document.getElementById('plan-output');
+  btn.disabled=true; btn.textContent='⏳ Creating your plan...';
+  out.innerHTML='<div style="text-align:center;padding:40px;color:var(--terra);font-family:Unbounded,sans-serif;font-size:.75rem;letter-spacing:2px;animation:pop .5s ease;">✦ GENERATING YOUR PERSONALIZED PLAN...</div>';
+
+  const prompt=`You are VIVA, a holistic women's wellness coach. Create a detailed, practical "${currentPlanType}" for a woman with this profile:
+- Age range: ${age}
+- Health priority: ${priority}
+- Activity level: ${activity}
+- Dietary restriction: ${restrict}
+- Current cycle phase: ${phase}
+- Main health concern: ${concern}
+- Additional notes: ${extra||'None'}
+
+Instructions:
+1. Create a comprehensive, day-by-day or structured plan with specific actions, foods, exercises, or practices
+2. Include specific amounts, timing, and practical how-to instructions
+3. Tailor advice specifically to women's physiology and hormonal cycles
+4. Reference evidence-based recommendations where relevant
+5. Make it warm, motivating, and easy to follow
+6. Start with a brief (2 sentence) rationale explaining why this plan addresses her specific needs
+7. Use clear sections with emojis for readability
+
+Format cleanly. Be specific and actionable.`;
+
+  try{
+    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1500,messages:[{role:'user',content:prompt}]})});
+    const d=await r.json();
+    const txt=d.content?.[0]?.text||'Could not generate plan. Please try again.';
+    out.innerHTML=txt
+      .replace(/\*\*(.*?)\*\*/g,'<strong style="color:var(--terra);">$1</strong>')
+      .replace(/\*(.*?)\*/g,'<em style="color:var(--muted);">$1</em>')
+      .replace(/#{1,3} (.*)/g,'<div style="font-family:Unbounded,sans-serif;font-size:.8rem;letter-spacing:1px;color:var(--moss);margin:16px 0 8px;border-bottom:2px solid var(--lime);padding-bottom:4px;">$1</div>')
+      .replace(/\n/g,'<br>');
+  }catch(e){
+    out.innerHTML='<div style="color:var(--terra);text-align:center;padding:30px;">Connection issue. Please try again! 🌿</div>';
+  }
+  btn.disabled=false; btn.textContent='✦ Generate My Personalized Plan';
+}
+
+// ── LIVE CHAT ─────────────────────────────────────────────
+const chatHist=[];
+const VIVA_SYS=`You are VIVA, a holistic women's wellness coach. You combine evidence-based science with integrative health wisdom. Your specialties:
+
+FERTILITY: BBT charting, OPK interpretation, cervical mucus tracking, symptothermal method, cycle phases (menstrual, follicular, ovulatory, luteal), preconception nutrition, egg quality, luteal phase defect, PCOS, endometriosis support, natural family planning.
+
+ENERGY: Adrenal health, mitochondrial support, iron deficiency (common in women), thyroid function, cortisol patterns, circadian rhythm, cycle-synced energy management, HPA axis.
+
+HYDRATION: Electrolyte balance, structured water, food-based hydration, dehydration-hormone connection, skin and kidney health.
+
+PAIN RELIEF: Dysmenorrhea (period cramps), endometriosis pain, PMDD, PMS, hormonal migraines, cyclic breast pain, fibromyalgia, natural anti-inflammatories, heat therapy, herbal remedies (ginger, turmeric, magnesium, vitex), restorative yoga.
+
+MINDFUL EATING: Intuitive eating framework, hunger-fullness scale, emotional eating patterns, food-mood connection, cycle-synced nutrition, gut-hormone axis, blood sugar regulation, anti-inflammatory eating, eating pace, HALT method, craving decoding.
+
+GUT HEALTH: Microbiome optimization, leaky gut in women, estrogen detoxification (beta-glucuronidase, estrobolome), probiotics, prebiotics, digestive enzyme support.
+
+WOMEN'S HEALTH: Hormone testing, HRT basics, perimenopause, PCOS, thyroid, autoimmune conditions common in women, supplement stack for women (magnesium, B vitamins, vitamin D, omega-3, iron, zinc).
+
+TONE: Warm, empowering, practical, evidence-based. Use clear language. Include specific protocols, dosages (when safe), timing, and alternatives. Give 3-5 actionable steps. Use emojis sparingly. Always add: "Consult your doctor/gynecologist if..." for medical concerns.`;
+
+async function vivaChat(){
+  const input=document.getElementById('viva-input');
+  const msg=input.value.trim();
+  if(!msg)return;
+  addMsg(msg,'me');
+  input.value='';
+  const btn=document.getElementById('viva-send');
+  btn.disabled=true; btn.textContent='...';
+  const thinking=addTyping();
+  chatHist.push({role:'user',content:msg});
+  try{
+    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1200,system:VIVA_SYS,messages:chatHist})});
+    const d=await r.json();
+    const reply=d.content?.[0]?.text||"I'm having a connection issue. Please try again! 🌿";
+    thinking.remove();
+    addMsg(reply,'bot');
+    chatHist.push({role:'assistant',content:reply});
+    if(chatHist.length>24)chatHist.splice(0,2);
+  }catch(e){
+    thinking.remove();
+    addMsg("Connection issue — please check your internet and try again! 🌿",'bot');
+  }
+  btn.disabled=false; btn.textContent='Send ✦';
+}
+
+function addMsg(text,role){
+  const c=document.getElementById('viva-chat');
+  const d=document.createElement('div');
+  d.className=`msg-b ${role}`;
+  if(role==='bot'){
+    d.innerHTML=text
+      .replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
+      .replace(/\*(.*?)\*/g,'<em>$1</em>')
+      .replace(/\n/g,'<br>');
+  } else {
+    d.textContent=text;
+  }
+  c.appendChild(d);
+  c.scrollTop=c.scrollHeight;
+  return d;
+}
+
+function addTyping(){
+  const c=document.getElementById('viva-chat');
+  const d=document.createElement('div');
+  d.className='msg-b bot';
+  d.innerHTML='<span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>';
+  c.appendChild(d);
+  c.scrollTop=c.scrollHeight;
+  return d;
+}
+
+function qChat(txt){ document.getElementById('viva-input').value=txt; vivaChat(); }
+</script>
+</body>
+</html>
