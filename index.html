@@ -323,15 +323,161 @@ label{font-family:'Syne',sans-serif;font-size:.6rem;letter-spacing:2px;text-tran
 ══════════════════════════════════════════ */
 .data-saved-row{display:flex;align-items:center;gap:8px;font-family:'Syne',sans-serif;font-size:.62rem;color:var(--muted);padding:8px 12px;background:rgba(63,185,80,.06);border-radius:8px;border:1px solid rgba(63,185,80,.15);margin-top:8px;}
 
+/* ══════════════════════════════════════════
+   TABLET — max 900px
+══════════════════════════════════════════ */
+@media(max-width:900px){
+  .dash-grid{grid-template-columns:repeat(3,1fr);}
+  .g3{grid-template-columns:1fr 1fr;}
+  .g4{grid-template-columns:1fr 1fr;}
+  .phase-timeline{grid-template-columns:1fr 1fr;}
+  .section{padding:20px;}
+}
+
+/* ══════════════════════════════════════════
+   MOBILE — max 700px
+══════════════════════════════════════════ */
 @media(max-width:700px){
-  .g2,.g3,.g4,.dash-grid,.phase-timeline,.pain-type-grid,.emotion-grid{grid-template-columns:1fr 1fr;}
-  .section{padding:14px;}
-  .ph-title{font-size:1.8rem;}
-  .hero h1{font-size:1.8rem;}
-  .nav-tabs{overflow-x:auto;}
-  .nt{font-size:.52rem;padding:5px 8px;}
-  body{cursor:auto;}
+  /* Base */
+  body{cursor:auto;font-size:15px;}
   .cursor,.cursor-ring{display:none;}
+  .section{padding:12px;max-width:100%;}
+
+  /* Nav */
+  nav{padding:0 12px;height:auto;flex-wrap:nowrap;gap:0;}
+  .nav-logo{font-size:.85rem;letter-spacing:2px;margin-right:8px;flex-shrink:0;}
+  .nav-logo span{font-size:.42rem;letter-spacing:2px;}
+  .nav-tabs{overflow-x:auto;-webkit-overflow-scrolling:touch;gap:1px;padding:6px 0;}
+  .nav-tabs::-webkit-scrollbar{display:none;}
+  .nt{font-size:.5rem;padding:5px 7px;letter-spacing:.8px;border-radius:6px;white-space:nowrap;}
+
+  /* Typography */
+  .ph{margin-bottom:16px;}
+  .ph-title{font-size:1.5rem;line-height:1.2;}
+  .ph-sub{font-size:.8rem;}
+  .ph-eye{font-size:.56rem;}
+  .lbl{font-size:.56rem;letter-spacing:2px;}
+
+  /* Hero */
+  .hero{padding:20px 16px;border-radius:14px;}
+  .hero h1{font-size:1.6rem;}
+  .hero p{font-size:.8rem;}
+  .hero-tag{font-size:.54rem;padding:3px 10px;}
+  .pill{font-size:.56rem;padding:5px 12px;}
+
+  /* Grids → single column on mobile */
+  .g2{grid-template-columns:1fr;}
+  .g3{grid-template-columns:1fr 1fr;}
+  .g4{grid-template-columns:1fr 1fr;}
+  .dash-grid{grid-template-columns:repeat(3,1fr);gap:8px;}
+
+  /* Dashboard tiles */
+  .dtile{padding:12px 6px;}
+  .dt-icon{font-size:1.4rem;margin-bottom:4px;}
+  .dt-val{font-size:1rem;}
+  .dt-lbl{font-size:.52rem;letter-spacing:.8px;}
+
+  /* Cards */
+  .card{padding:14px;border-radius:12px;}
+
+  /* Quick nav grid */
+  .quick-nav{grid-template-columns:repeat(3,1fr);}
+  .qn-btn{padding:10px 4px;}
+  .qn-icon{font-size:1.2rem;}
+  .qn-lbl{font-size:.52rem;}
+
+  /* Intention card */
+  .intention-card{padding:14px;}
+  .intention-text{font-size:.9rem;}
+
+  /* Streak row */
+  .streak-day{width:24px;height:24px;font-size:.6rem;}
+
+  /* FERTILITY */
+  .fert-ring{width:130px;height:130px;}
+  .fert-ring svg{width:130px;height:130px;}
+  .fert-day{font-size:1.6rem;}
+  .phase-timeline{grid-template-columns:repeat(2,1fr);gap:6px;}
+  .pb-em{font-size:1.1rem;}
+  .pb-n{font-size:.5rem;}
+  .pb-d{font-size:.62rem;}
+  .symptom-grid{grid-template-columns:repeat(2,1fr);gap:5px;}
+  .sym-btn{font-size:.68rem;padding:8px 4px;}
+  .bbt-chart{height:55px;}
+  .opk-row{gap:3px;}
+  .opk-day{min-width:22px;height:32px;font-size:.56rem;}
+  .cm-type{font-size:.72rem;padding:5px 10px;}
+
+  /* ENERGY */
+  .energy-meter{width:150px;height:150px;}
+  .energy-meter svg{width:150px;height:150px;}
+  .em-val{font-size:1.8rem;}
+  .energy-level-card{padding:12px;}
+
+  /* HYDRATION */
+  .drop{width:36px;height:44px;}
+  .water-art{gap:4px;}
+  .hydro-stats{grid-template-columns:repeat(3,1fr);gap:8px;}
+  .h-stat-val{font-size:1rem;}
+  .h-stat-lbl{font-size:.56rem;}
+
+  /* PAIN RELIEF */
+  .pain-type-grid{grid-template-columns:repeat(3,1fr);gap:6px;}
+  .ptb{padding:10px 4px;}
+  .ptb-icon{font-size:1.3rem;}
+  .ptb-name{font-size:.52rem;}
+  .pain-scale-row{gap:3px;flex-wrap:wrap;}
+  .pdot{width:26px;height:26px;font-size:.72rem;}
+  .rpc{padding:14px;}
+  .rpc-title{font-size:.75rem;}
+
+  /* MINDFUL EATING */
+  .emotion-grid{grid-template-columns:repeat(4,1fr);}
+  .emo-btn{padding:8px 2px;}
+  .emo-icon{font-size:1rem;}
+  .emo-lbl{font-size:.58rem;}
+  .craving-card{padding:12px;}
+  .pace-display{font-size:2.2rem;}
+
+  /* SLEEP */
+  .sleep-wheel{grid-template-columns:repeat(7,1fr);gap:3px;}
+  .sw-day{padding:6px 2px;}
+  .sw-lbl{font-size:.5rem;}
+  .sw-val{font-size:.65rem;}
+  .sleep-bar-row{gap:6px;}
+  .slbl{width:50px;font-size:.7rem;}
+
+  /* JOURNAL */
+  .je-mood-row{flex-wrap:wrap;gap:4px;}
+  .mood-chip{font-size:.68rem;padding:4px 8px;}
+
+  /* GOALS */
+  .goal-item{padding:10px;}
+  .g-circle{width:22px;height:22px;font-size:.72rem;}
+  .g-title{font-size:.83rem;}
+  .g-sub{font-size:.68rem;}
+  .g-cat{font-size:.52rem;padding:2px 7px;}
+
+  /* Buttons */
+  .btn{padding:10px 14px;font-size:.62rem;}
+
+  /* Inputs */
+  input,textarea,select{font-size:.85rem;padding:9px 12px;}
+
+  /* AI form grid */
+  .ai-form{grid-template-columns:1fr;}
+}
+
+/* ══════════════════════════════════════════
+   SMALL MOBILE — max 380px
+══════════════════════════════════════════ */
+@media(max-width:380px){
+  .dash-grid{grid-template-columns:1fr 1fr;}
+  .pain-type-grid{grid-template-columns:repeat(2,1fr);}
+  .emotion-grid{grid-template-columns:repeat(2,1fr);}
+  .ph-title{font-size:1.3rem;}
+  .hero h1{font-size:1.3rem;}
+  .nt{font-size:.45rem;padding:4px 6px;}
 }
 </style>
 </head>
@@ -474,21 +620,22 @@ label{font-family:'Syne',sans-serif;font-size:.6rem;letter-spacing:2px;text-tran
       </div>
 
       <div class="card mb12">
-        <span class="lbl">Today's Symptoms</span>
-        <div class="symptom-grid">
-          <div class="sym-btn" onclick="this.classList.toggle('sel');saveFert()">💧 Wet CM</div>
-          <div class="sym-btn" onclick="this.classList.toggle('sel');saveFert()">🌡️ BBT Rise</div>
-          <div class="sym-btn" onclick="this.classList.toggle('sel');saveFert()">💫 Mittelschmerz</div>
-          <div class="sym-btn" onclick="this.classList.toggle('sel');saveFert()">❤️ High Libido</div>
-          <div class="sym-btn" onclick="this.classList.toggle('sel');saveFert()">✨ Glowing Skin</div>
-          <div class="sym-btn" onclick="this.classList.toggle('sel');saveFert()">😴 Fatigue</div>
-          <div class="sym-btn" onclick="this.classList.toggle('sel');saveFert()">🤱 Breast Tender</div>
-          <div class="sym-btn" onclick="this.classList.toggle('sel');saveFert()">😟 Mood Swings</div>
-          <div class="sym-btn" onclick="this.classList.toggle('sel');saveFert()">🩸 Spotting</div>
-          <div class="sym-btn" onclick="this.classList.toggle('sel');saveFert()">💊 Took OPK</div>
-          <div class="sym-btn" onclick="this.classList.toggle('sel');saveFert()">🧠 Brain Fog</div>
-          <div class="sym-btn" onclick="this.classList.toggle('sel');saveFert()">🌸 Cervix High</div>
+        <span class="lbl">Today's Symptoms <span style="color:var(--muted);font-size:.55rem;letter-spacing:1px;">TAP FOR GUIDANCE</span></span>
+        <div class="symptom-grid" id="fert-sym-grid">
+          <div class="sym-btn fert-sym" onclick="toggleFertSym(this,'wetcm')">💧 Wet CM</div>
+          <div class="sym-btn fert-sym" onclick="toggleFertSym(this,'bbtrise')">🌡️ BBT Rise</div>
+          <div class="sym-btn fert-sym" onclick="toggleFertSym(this,'mittel')">💫 Mittelschmerz</div>
+          <div class="sym-btn fert-sym" onclick="toggleFertSym(this,'libido')">❤️ High Libido</div>
+          <div class="sym-btn fert-sym" onclick="toggleFertSym(this,'glowskin')">✨ Glowing Skin</div>
+          <div class="sym-btn fert-sym" onclick="toggleFertSym(this,'fertfatigue')">😴 Fatigue</div>
+          <div class="sym-btn fert-sym" onclick="toggleFertSym(this,'breasttender')">🤱 Breast Tender</div>
+          <div class="sym-btn fert-sym" onclick="toggleFertSym(this,'moodswings')">😟 Mood Swings</div>
+          <div class="sym-btn fert-sym" onclick="toggleFertSym(this,'spotting')">🩸 Spotting</div>
+          <div class="sym-btn fert-sym" onclick="toggleFertSym(this,'tookopk')">💊 Took OPK</div>
+          <div class="sym-btn fert-sym" onclick="toggleFertSym(this,'brainfog')">🧠 Brain Fog</div>
+          <div class="sym-btn fert-sym" onclick="toggleFertSym(this,'cervixhigh')">🌸 Cervix High</div>
         </div>
+        <div id="fert-sym-detail" style="display:none;margin-top:12px;"></div>
         <div style="display:flex;gap:8px;margin-top:12px;">
           <button class="btn btn-rose" onclick="saveFert()" style="flex:1;">💾 Save Today's Data</button>
         </div>
@@ -1110,6 +1257,155 @@ function recalcFert(){
   badge.textContent=phaseName;badge.style.borderColor=phaseColor;badge.style.color=phaseColor;
   badge.style.background=`${phaseColor}18`;
 }
+// ═══════════════════════════════════════════════════
+// FERTILITY SYMPTOM GUIDANCE
+// ═══════════════════════════════════════════════════
+const fertSymGuide={
+  wetcm:{
+    name:'💧 Wet / Egg-White Cervical Mucus',color:'var(--sky)',
+    what:'This is your most important fertility sign. Wet, slippery, stretchy mucus (like raw egg white) signals that ovulation is approaching or occurring right now. Sperm can survive inside this mucus for up to 5 days.',
+    actions:[
+      {icon:'🌟',t:'You are in your FERTILE WINDOW — act now if trying to conceive','d':'Egg-white or watery cervical mucus is your most reliable sign that ovulation is imminent (within 12–48 hours). If trying to conceive, now is the optimal time for intercourse. If using the Symptothermal Method for contraception, this is an unsafe day — avoid unprotected sex until 3 days past your peak day.'},
+      {icon:'🌡️',t:'Confirm with OPK or BBT','d':'Take an ovulation predictor kit (OPK) test now — an LH surge should appear if ovulation is 24–36 hours away. Log your basal body temperature each morning: you\'ll see a shift upward of 0.2–0.5°F after ovulation occurs, confirming it.'},
+      {icon:'🥗',t:'Eat for Egg Quality Today','d':'Zinc (pumpkin seeds, oysters) supports egg quality. Vitamin E (sunflower seeds, almonds) protects egg cells from oxidative damage. Folate (dark leafy greens, avocado) is critical if you\'re trying to conceive. Avoid: alcohol and smoking — both impair egg quality and cervical mucus production.'},
+      {icon:'💧',t:'Stay Well Hydrated','d':'Cervical mucus production depends heavily on hydration. Drink 2–2.5L of water today. Dehydration reduces cervical mucus volume and quality, impairing sperm transport. Avoid: antihistamines, decongestants (like pseudoephedrine) — these dry up all mucus membranes including cervical mucus.'}
+    ]
+  },
+  bbtrise:{
+    name:'🌡️ BBT Temperature Rise',color:'var(--gold)',
+    what:'A sustained rise in basal body temperature (0.2–0.5°F above your pre-ovulatory baseline) lasting 3+ days confirms ovulation has occurred. Progesterone, released after ovulation, raises body temperature.',
+    actions:[
+      {icon:'✅',t:'Ovulation Confirmed — Luteal Phase Has Started','d':'A sustained BBT rise for 3 consecutive days means ovulation is confirmed. Your luteal phase has begun. If trying to conceive, the egg was released 12–24 hours before the temperature rise — sperm from the last 2–3 days may still fertilize it. If using Symptothermal Method, you are now in the infertile post-ovulatory phase (safe after 3 full high temps).'},
+      {icon:'📊',t:'Chart the Pattern Accurately','d':'For reliable confirmation: your post-ovulation temperatures should be at least 0.2°F (0.1°C) above the highest of the 6 pre-ovulatory temps. Note any disruptions to your reading: illness, alcohol the night before, sleeping in, getting up before taking temp, or room temperature changes — all can cause false high readings.'},
+      {icon:'💊',t:'Support Luteal Phase Now','d':'Take 400mg magnesium glycinate nightly — supports progesterone production and reduces PMS. Vitamin B6 (50mg) helps progesterone synthesis. If your luteal phase is short (less than 10 days from BBT rise to period), discuss with your doctor — this may affect fertility and is treatable.'},
+      {icon:'🌙',t:'Rest and Nourish in Luteal Phase','d':'Now that ovulation is confirmed, shift to luteal phase lifestyle: reduce intense exercise, prioritize sleep (progesterone helps deepen sleep), eat warming complex carbohydrates (support serotonin as estrogen drops), and reduce alcohol and caffeine to minimize PMS symptoms.'}
+    ]
+  },
+  mittel:{
+    name:'💫 Mittelschmerz (Ovulation Pain)',color:'var(--rose)',
+    what:'Mittelschmerz means "middle pain" in German. This one-sided twinge, ache, or sharp pain in your lower abdomen is caused by the follicle rupturing or by the fluid released during ovulation irritating the abdominal lining. It occurs in ~20% of women.',
+    actions:[
+      {icon:'📍',t:'Identify Which Side — Tells You Which Ovary','d':'The side of the pain tells you which ovary is ovulating this cycle. The pain typically lasts from a few minutes to 48 hours. Keep a note: "Left side" or "Right side" — this is useful fertility data. Alternating ovaries is normal. Some women always ovulate from the same side.'},
+      {icon:'🔥',t:'Heat and Rest for Relief','d':'Apply a warm heat pad to the lower abdomen (the same side as the pain) for 20 minutes. Take a warm bath or shower. Lie down with a pillow under your knees. Gentle abdominal breathing helps: breathe deeply so your belly rises, letting the diaphragm relax the surrounding muscles. Avoid vigorous exercise while in pain.'},
+      {icon:'🌿',t:'Natural Pain Relief','d':'Take magnesium glycinate 400mg to relax smooth muscle around the ovary. Ginger tea (anti-prostaglandin) can reduce the discomfort. If pain is severe, ibuprofen is effective but note: NSAIDs taken during ovulation may theoretically interfere with the follicle rupture — use sparingly if trying to conceive.'},
+      {icon:'🚨',t:'When to Be Concerned','d':'Normal mittelschmerz is mild-to-moderate and resolves within 48 hours. Seek medical attention if pain is severe and sudden, is accompanied by fever, if you have missed a period (ectopic pregnancy risk), if it lasts more than 3 days, or if it is significantly worse than previous cycles. Severe recurring ovulation pain may indicate endometriosis or ovarian cysts.'}
+    ]
+  },
+  libido:{
+    name:'❤️ High Libido',color:'var(--rose)',
+    what:'A natural increase in sexual desire around ovulation is driven by the surge in estrogen and testosterone. This is your body\'s biological signal that you are in your fertile window — nature\'s way of encouraging reproduction.',
+    actions:[
+      {icon:'🌟',t:'You Are Likely in Your Fertile Window','d':'High libido is a secondary fertility sign. It typically peaks 1–2 days before and on the day of ovulation, when estrogen and a small testosterone surge are highest. Cross-check with your cervical mucus (look for egg-white consistency) and OPK results to confirm you\'re in your fertile window.'},
+      {icon:'💆',t:'Honour This Phase\'s Energy','d':'The ovulatory phase is your most magnetic, socially confident, and physically energized phase. This is a good time to channel your heightened energy into social connection, leadership moments, creative work, and physical exercise — not just sexual activity.'},
+      {icon:'🥗',t:'Support Your Hormonal Peak','d':'Eat zinc-rich foods (oysters, pumpkin seeds, beef) — zinc is essential for testosterone production and egg quality. Avoid excess alcohol which disrupts estrogen metabolism. Stay hydrated — dehydration reduces all hormone production. This phase your metabolism is slightly higher, so don\'t under-eat.'},
+      {icon:'📝',t:'Log It as a Fertility Sign','d':'Record "High Libido" in your fertility journal — it is a recognized secondary fertility sign in the Creighton and Billings Ovulation Methods. When combined with cervical mucus observation and BBT, it helps build a complete picture of your ovulation pattern over multiple cycles.'}
+    ]
+  },
+  glowskin:{
+    name:'✨ Glowing Skin',color:'var(--gold)',
+    what:'The peak in estrogen before ovulation increases collagen production, skin hydration, and sebum regulation — giving many women a natural "glow." Blood flow to the skin also increases in the ovulatory phase.',
+    actions:[
+      {icon:'🌸',t:'You\'re in Your Ovulatory Phase — Enjoy It','d':'This is normal and positive. Your skin looks its best because estrogen at its peak stimulates collagen synthesis and increases hyaluronic acid in skin. This is also why your hair may appear shinier and fuller. Enjoy this phase — it\'s your body working well.'},
+      {icon:'💧',t:'Support Your Skin From Inside','d':'Drink 2–2.5L of water to maintain skin hydration during this high-estrogen phase. Eat vitamin C-rich foods (bell peppers, kiwi, citrus) — vitamin C is a cofactor for collagen production. Omega-3 fatty acids (salmon, flaxseed) maintain the skin\'s lipid barrier and glow.'},
+      {icon:'🌿',t:'Protect Your Hormonal Skin Window','d':'Avoid: sugar spikes (cause glycation which damages collagen), alcohol (dehydrates skin and disrupts estrogen), smoking (destroys collagen). Use SPF daily — estrogen increases melanin sensitivity, making your skin slightly more prone to pigmentation in this phase. Gentle exfoliation this week can enhance the natural glow.'},
+      {icon:'📸',t:'Cycle-Synced Skincare','d':'Your ovulatory phase is when your skin is most forgiving and radiant. This is a good time for: facial treatments, introducing new skincare products (less reactive), and social events. Note that in your luteal phase (next phase), progesterone may increase oiliness and breakouts — prepare by adding a gentle salicylic acid product.'}
+    ]
+  },
+  fertfatigue:{
+    name:'😴 Fatigue During Cycle',color:'var(--lavender)',
+    what:'Fatigue at different cycle phases has different causes: during menstruation it\'s iron loss and prostaglandins; in the luteal phase it\'s progesterone\'s sedating effect and declining estrogen; mid-cycle fatigue may signal ovulation or iron deficiency.',
+    actions:[
+      {icon:'🩸',t:'Iron First — Most Common Cause','d':'Menstrual iron loss is the #1 cause of female fatigue. If you experience persistent fatigue especially during and after your period, ask your doctor for a ferritin (stored iron) blood test — ferritin below 30 ng/mL causes fatigue even with a "normal" hemoglobin. Eat iron-rich foods with vitamin C: lentils + lemon, spinach + orange juice, red meat + tomato.'},
+      {icon:'💤',t:'Cycle-Smart Rest Strategy','d':'Fatigue during your period is biologically expected — your body is doing significant work. Take a 20-min power nap (not longer), go to bed 30–60 minutes earlier during your period. Do not fight this with excessive caffeine — it masks fatigue while worsening it tomorrow. Prioritize 8 hours of night sleep; progesterone in the luteal phase actually deepens sleep quality.'},
+      {icon:'💧',t:'Hydrate + Electrolytes','d':'Dehydration causes fatigue that feels identical to tiredness. Before assuming you\'re fatigued, drink 500ml water with a pinch of sea salt. During your period, you lose extra fluids — increase water intake by 300–500ml per day during menstruation. Coconut water is an excellent natural electrolyte drink for this phase.'},
+      {icon:'🥩',t:'Nourishing Foods for Your Phase','d':'During menstruation: iron-rich warming foods (bone broth, lentil soup, red meat), dark chocolate 85% (magnesium + iron + mild stimulant). During luteal phase fatigue: complex carbs + protein combo (sweet potato + chicken), magnesium glycinate 400mg nightly, B-complex vitamin. Avoid: skipping meals, high sugar (causes energy crashes), excessive caffeine.'}
+    ]
+  },
+  breasttender:{
+    name:'🤱 Breast Tenderness',color:'var(--peach)',
+    what:'Breast tenderness (mastalgia) is most common in the luteal phase (days 15–28) due to rising progesterone causing fluid retention in breast tissue, and can also occur around ovulation due to the estrogen peak. It typically resolves with the onset of menstruation.',
+    actions:[
+      {icon:'💊',t:'Reduce Caffeine Immediately','d':'Methylxanthines in coffee, tea, cola, and chocolate worsen breast tenderness by increasing cyclic AMP in breast tissue. Reducing caffeine intake reduces cyclic breast pain in 65–70% of women within 1–2 cycles. Switch to herbal tea, decaf, or roasted dandelion root "coffee." The effect is cumulative — even a small reduction helps.'},
+      {icon:'🌿',t:'Evening Primrose Oil (EPO)','d':'Take 1500–3000mg evening primrose oil daily. EPO contains GLA (gamma-linolenic acid) which converts to anti-inflammatory prostaglandins, specifically reducing the hormonal inflammation that causes breast tenderness. Takes 4–6 weeks to build up. Most effective if taken consistently throughout the cycle, not just during tender days.'},
+      {icon:'🧊',t:'Cold Compress + Correct Bra','d':'Apply a cool (not ice-cold) compress to each breast for 10 minutes — reduces inflammatory swelling and temporarily numbs nerve endings. Wear a well-fitted, supportive non-underwire bra, including at night during peak tenderness. Underwire restricts lymphatic drainage and can worsen discomfort. A soft sports bra for sleep works well.'},
+      {icon:'🧂',t:'Reduce Sodium + Increase Magnesium','d':'High sodium causes fluid retention throughout the body, including breast tissue. Reduce salt 5–7 days before your period. Increase potassium (avocado, banana) to counteract sodium retention. Take magnesium glycinate 400mg nightly — magnesium directly reduces progesterone-driven fluid retention and breast pain by 40% in clinical trials.'}
+    ]
+  },
+  moodswings:{
+    name:'😟 Mood Swings',color:'var(--lavender)',
+    what:'Mood swings are most common in the luteal phase (days 15–28) as estrogen and progesterone fluctuate. Estrogen influences serotonin and dopamine; progesterone affects GABA receptors. When these drop in the late luteal phase, mood, sleep, and coping all feel harder.',
+    actions:[
+      {icon:'🧠',t:'Understand the Biology — It\'s NOT You','d':'You are not "emotional" or "difficult" — your brain chemistry is genuinely changing. Estrogen supports serotonin; as it drops before your period, serotonin drops too. Progesterone metabolite allopregnanolone affects GABA receptors — in some women this calms; in others it dysregulates mood. Knowing why helps you respond with compassion rather than self-criticism.'},
+      {icon:'💊',t:'Magnesium + B6 Protocol','d':'Take 400mg magnesium glycinate + 50mg Vitamin B6 daily from ovulation until period. Magnesium is essential for GABA production (your brain\'s main calming neurotransmitter). B6 is a cofactor for serotonin and dopamine synthesis. Together, they reduce PMS mood symptoms by up to 48% in randomized trials. Take at the same time each evening with food.'},
+      {icon:'🏃',t:'Movement is the Most Effective Intervention','d':'Even a 20-minute brisk walk raises serotonin, dopamine, and endorphins for 3–5 hours. Exercise is as effective as SSRIs for mild-to-moderate PMS-related mood changes (without side effects). Yoga, specifically, reduces cortisol and activates the parasympathetic nervous system. Do not skip movement on your worst mood days — it helps most then.'},
+      {icon:'🥗',t:'Stabilize Blood Sugar to Stabilize Mood','d':'Blood sugar crashes worsen mood swings dramatically during the luteal phase. Eat every 3–4 hours. Always combine carbohydrates with protein and fat — never eat carbs alone. Avoid: alcohol (a depressant that worsens low mood), caffeine after 12pm (disrupts sleep and worsens next-day mood), sugar spikes. Add: complex carbs (sweet potato, oats) which support serotonin synthesis.'}
+    ]
+  },
+  spotting:{
+    name:'🩸 Spotting',color:'var(--rose)',
+    what:'Light spotting can occur for several reasons during your cycle. Ovulation spotting (mid-cycle) is light pink or brown and lasts 1–2 days. Implantation spotting (6–12 days after ovulation) is very light. Other causes include cervical sensitivity, hormonal fluctuations, or less commonly, something requiring medical attention.',
+    actions:[
+      {icon:'📅',t:'Identify WHEN in Your Cycle It\'s Occurring','d':'Mid-cycle spotting (around days 12–16): Likely ovulation spotting — caused by the estrogen drop just before ovulation, or the follicle rupturing. This is normal and a fertility sign. 6–12 days post-ovulation: Could be implantation bleeding — very light, pink or brown, lasting 1–3 days. Before expected period: "Premenstrual spotting" may indicate low progesterone in the luteal phase.'},
+      {icon:'🩺',t:'Track and Report Patterns','d':'Log the date, color (pink, brown, red), flow (very light, light), duration, and whether it was accompanied by cramping or pain. Show this log to your gynecologist. Recurring spotting, especially mid-cycle or heavy spotting, can indicate: cervical ectropion, hormonal imbalance, polyps, or (rarely) infection. Do not ignore recurring unusual spotting.'},
+      {icon:'🌿',t:'Support Hormonal Balance','d':'Premenstrual spotting (more than 2 days before full flow) may indicate short luteal phase or low progesterone. Discuss with your doctor — this is common and treatable. Support progesterone naturally: Vitex agnus-castus (Chasteberry) 40mg daily, Vitamin B6 50mg, and magnesium. Avoid: high-intensity exercise during spotting, tampons if spotting is very light.'},
+      {icon:'🚨',t:'When to See a Doctor Promptly','d':'See your doctor if: spotting is accompanied by pain, fever, or unusual discharge (possible infection); spotting is heavy or contains clots mid-cycle; you have spotting after sex consistently (possible cervical issue); you have recently changed hormonal contraception; you are postmenopausal and experience any spotting; or if you are concerned you may be pregnant.'}
+    ]
+  },
+  tookopk:{
+    name:'💊 Took OPK Test',color:'var(--gold)',
+    what:'Ovulation Predictor Kits (OPKs) detect the LH (luteinizing hormone) surge that triggers ovulation. The LH surge occurs 24–48 hours before ovulation. A positive OPK means your most fertile window is NOW — ovulation is imminent.',
+    actions:[
+      {icon:'📊',t:'How to Read Your Result Correctly','d':'Positive OPK: The test line is AS DARK OR DARKER than the control line. This is your LH surge — ovulation expected within 12–48 hours. Negative OPK: Test line is lighter than control — LH is low, not yet surging. Near-positive: Lines similar — retest in 4–6 hours. Important: A positive OPK means ovulation is coming, not that it has already happened.'},
+      {icon:'⏰',t:'Best Time to Test','d':'Test between 10am–8pm (not first morning urine — LH is released in the morning but takes 4+ hours to appear in urine). Test at the same time each day once in your fertile window. Reduce fluid intake 2 hours before testing (concentrated urine = more accurate result). Test once daily from around day 10–12 of your cycle, or twice daily when you see the line getting darker.'},
+      {icon:'📅',t:'After a Positive — What to Do','d':'Once you get a positive OPK: if trying to conceive, have intercourse today and the next 1–2 days for maximum coverage. Combine with egg-white cervical mucus observation for highest accuracy — mucus confirms the hormonal environment is optimal. Begin taking your basal body temperature each morning to confirm when ovulation actually occurs (temperature rise = confirmed ovulation).'},
+      {icon:'🔄',t:'Cross-Check with Other Signs','d':'OPKs alone can give false positives (especially in women with PCOS — LH can be elevated throughout the cycle without ovulation). For highest accuracy use the Symptothermal Method: OPK + BBT + Cervical Mucus together. If you consistently get positive OPKs without a subsequent BBT rise, discuss with your doctor — you may have anovulatory cycles.'}
+    ]
+  },
+  brainfog:{
+    name:'🧠 Brain Fog',color:'var(--sky)',
+    what:'Hormonal brain fog commonly occurs during menstruation (due to iron loss and prostaglandins) and the late luteal phase (as estrogen and progesterone drop, reducing dopamine and serotonin). It manifests as poor concentration, forgetfulness, slow thinking, and word-finding difficulty.',
+    actions:[
+      {icon:'💧',t:'Hydrate First — Most Common Cause','d':'Mild dehydration (just 1–2%) reduces cognitive performance, memory, and attention by measurable amounts. Before anything else: drink 500ml of water with electrolytes (pinch of sea salt + lemon). Many cases of hormonal brain fog are partly dehydration. Wait 20 minutes after hydrating before judging how bad the brain fog actually is.'},
+      {icon:'🩸',t:'Check Iron and B12 Status','d':'Iron deficiency is the most common cause of persistent brain fog in women of reproductive age — even with "normal" hemoglobin. Ask for a ferritin test (target: 50–100 ng/mL for cognitive function). B12 deficiency also causes significant brain fog, fatigue, and mood changes — common in vegetarians/vegans. Both are easily treated once identified.'},
+      {icon:'🌿',t:'Immediate Brain Fog Relief Protocol','d':'Peppermint oil inhaled through the nose (1–2 drops on a tissue) is proven to increase alertness and memory within minutes. 10 minutes of brisk walking increases brain-derived neurotrophic factor (BDNF) and cerebral blood flow — more effective than caffeine for acute brain fog. Eat a small protein + fat snack (nuts, cheese, eggs) if you\'ve skipped meals — blood sugar dips cause instant brain fog.'},
+      {icon:'💊',t:'Nutrients That Support Brain Clarity','d':'Omega-3 DHA (500–1000mg daily) is the primary structural fat in brain cell membranes — essential for neurological function. Lion\'s Mane mushroom (500mg) stimulates nerve growth factor (NGF) and improves cognitive clarity. Magnesium glycinate 400mg nightly — magnesium deficiency directly impairs memory, attention, and processing speed. B-complex vitamin supports all neurotransmitter synthesis.'}
+    ]
+  },
+  cervixhigh:{
+    name:'🌸 Cervix High / Soft / Open',color:'var(--rose2)',
+    what:'Your cervix changes position, texture, and openness throughout your cycle in response to hormones. Learning to track these changes (the "SHOW" acronym: Soft, High, Open, Wet) is part of the Symptothermal Method. A high, soft, open cervix indicates peak fertility.',
+    actions:[
+      {icon:'🌟',t:'SHOW = Peak Fertile Sign','d':'High cervix + Soft (like lips, not nose) + Open (small opening) + Wet discharge = your most fertile state, indicating ovulation is imminent. This is the most advanced fertility sign — when combined with egg-white mucus and positive OPK, this is a triple confirmation of your peak fertile window. If trying to conceive: today is a key opportunity.'},
+      {icon:'🔄',t:'How Cervix Changes Through Cycle','d':'MENSTRUAL: Low, firm, slightly open (to allow flow). FOLLICULAR: Gradually rises, softens. OVULATORY: Highest, softest, most open — almost disappears (hard to reach). LUTEAL: Returns to low, firm, closed position. Check at the same time of day, in the same position, after washing hands — usually checked internally by inserting one or two fingers.'},
+      {icon:'📝',t:'How to Track Accurately','d':'Check cervical position once daily in the same body position (squatting or one foot on toilet). Use clean hands. Feel for: position (how far up), firmness (soft vs. firm like tip of nose), openness (tiny dip vs. open). Record in your fertility chart. It takes 2–3 cycles to feel confident. Do not check after sex or exercise as position temporarily changes.'},
+      {icon:'📚',t:'Learn the Symptothermal Method','d':'Cervical position tracking is one of three signs in the Symptothermal Method (BBT + Cervical Mucus + Cervical Position). Used together, this method has 99.6% effectiveness when properly learned for both achieving and avoiding pregnancy. Consider learning from a certified Fertility Awareness Educator for proper instruction.'}
+    ]
+  }
+};
+
+let activeFertSym=null;
+function toggleFertSym(el,sym){
+  const box=document.getElementById('fert-sym-detail');
+  if(activeFertSym===sym){
+    el.classList.remove('sel');activeFertSym=null;
+    box.style.display='none';box.innerHTML='';return;
+  }
+  document.querySelectorAll('.fert-sym').forEach(b=>b.classList.remove('sel'));
+  el.classList.add('sel');activeFertSym=sym;saveFert();
+  const s=fertSymGuide[sym];if(!s)return;
+  box.style.display='block';
+  box.innerHTML=`<div style="background:${s.color}0D;border:1px solid ${s.color}2A;border-radius:12px;padding:14px;">
+    <div style="font-family:'Syne',sans-serif;font-size:.75rem;font-weight:800;color:${s.color};margin-bottom:4px;">${s.name}</div>
+    <div style="font-size:.8rem;color:var(--muted2);line-height:1.6;margin-bottom:12px;padding:8px;background:${s.color}08;border-radius:8px;">${s.what}</div>
+    ${s.actions.map((a,i)=>`<div style="display:flex;gap:10px;padding:9px 0;${i<s.actions.length-1?'border-bottom:1px solid '+s.color+'18;':''}">
+      <div style="width:30px;height:30px;border-radius:50%;background:${s.color}15;border:1px solid ${s.color}2A;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;">${a.icon}</div>
+      <div><div style="font-family:'Syne',sans-serif;font-size:.7rem;font-weight:700;color:${s.color};margin-bottom:3px;">${a.t}</div>
+      <div style="font-size:.79rem;line-height:1.65;color:var(--muted2);">${a.d}</div></div>
+    </div>`).join('')}
+  </div>`;
+  box.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
 function saveFert(){
   save('fert',{lastDate:document.getElementById('f-last').value,len:document.getElementById('f-len').value,luteal:document.getElementById('f-luteal').value,period:document.getElementById('f-period').value});
   const s=document.getElementById('fert-saved');s.style.display='flex';setTimeout(()=>s.style.display='none',2000);
